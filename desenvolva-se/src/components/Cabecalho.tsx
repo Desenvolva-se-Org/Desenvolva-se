@@ -1,58 +1,58 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// Garanta que o caminho para a sua logo PNG está correto.
-// O Vite normalmente lida com a importação de assets como URLs.
-import LogoImage from '../assets/logo-desenvolva-se.png'; 
+import LogoImage from '../assets/logo-desenvolva-se.png'; // Garanta que este caminho está correto
 
 const Cabecalho: React.FC = () => {
+  // Estado para controlar o tema
   const [isDarkMode, setIsDarkMode] = React.useState(false);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
-    // Adiciona/remove a classe 'dark' do elemento <html>
-    // Isso é o que o Tailwind usa para alternar os temas
+    // Alterna a classe 'dark' no elemento <html>, que o CSS usa para mudar as variáveis de cor
     document.documentElement.classList.toggle('dark'); 
   };
 
   return (
-    // bg-background DEVE aplicar sua cor de fundo. Se não, o problema está na configuração do Tailwind.
-    // Usamos 'dark:bg-bg-dark' como fallback para debug se 'bg-background' não estiver funcionando
-    <header className="bg-background text-text shadow-md sticky top-0 z-50 transition-colors duration-300">
-      <nav className="container mx-auto p-4 flex items-center justify-between">
-        {/* Bloco da Logo e Título */}
-        <div className="flex items-center space-x-2 min-w-max"> {/* min-w-max para evitar quebras cedo demais */}
-          <Link to="/" className="flex items-center">
+    // Usa a classe CSS pura 'cabecalho-base'
+    <header className="cabecalho-base"> 
+      <nav className="navegacao-content"> {/* Usa a classe CSS pura para flexbox principal */}
+        
+        {/* Bloco da Logo e Título (usa style inline para flexbox) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
             <img 
               src={LogoImage} 
               alt="Logo Desenvolva-se" 
-              className="h-8 w-auto mr-2 object-contain" // h-8 (32px) e w-auto (largura automática) são cruciais
+              className="logo-cabecalho" // Classe pura para tamanho e espaçamento
             />
-            <span className="text-2xl font-title font-bold text-text">
+            <span className="text-xl font-title font-bold text-text">
               Desenvolva-se
             </span>
           </Link>
-          {/* Escondido em telas pequenas, visível a partir de sm */}
+          {/* Slogan usa classes Tailwind que funcionam (fontes) mas o layout está no CSS puro */}
           <span className="text-xs text-text/80 ml-2 mt-1 hidden sm:block">Seu próximo nível profissional.</span> 
         </div>
 
         {/* Links de Navegação */}
-        {/* Escondido por padrão, flex a partir de md. */}
-        <div className="hidden md:flex items-center space-x-6 font-sans">
-          <Link to="/" className="text-text hover:text-primary transition-colors duration-200">Home</Link>
-          <Link to="/cursos" className="text-text hover:text-primary transition-colors duration-200">Cursos</Link>
-          <Link to="/sobre" className="text-text hover:text-primary transition-colors duration-200">Sobre</Link>
-          <Link to="/contato" className="text-text hover:text-primary transition-colors duration-200">Contato</Link>
-          <Link to="/integrantes" className="text-text hover:text-primary transition-colors duration-200">Integrantes</Link>
+        {/* Usa a classe nav-links-container para espaçamento (gap) e hidden/md:flex para responsividade */}
+        <div className="hidden md:flex nav-links-container"> 
+          <Link to="/" className="nav-link">HOME</Link>
+          <Link to="/cursos" className="nav-link">CURSOS</Link>
+          <Link to="/sobre" className="nav-link">SOBRE</Link>
+          <Link to="/contato" className="nav-link">CONTATO</Link>
+          <Link to="/integrantes" className="nav-link">INTEGRANTES</Link>
         </div>
 
-        {/* Botões de Ação e Toggle de Tema */}
-        <div className="flex items-center space-x-4">
+        {/* Botões de Ação e Toggle de Tema (usa style inline para flexbox) */}
+        <div className="action-buttons-container">
+          
           {/* Toggle de Tema */}
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full bg-cardBg hover:bg-secondary/20 transition-colors duration-200"
+            className="toggle-theme-button"
             aria-label="Alternar tema"
           >
+            {/* Ícones de Sol e Lua */}
             {isDarkMode ? (
               <svg className="h-6 w-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-4.275l-.707.707M6.343 17.657l-.707.707M16.95 6.343l.707-.707M7.05 16.95l-.707-.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -64,15 +64,15 @@ const Cabecalho: React.FC = () => {
             )}
           </button>
 
-          {/* Botão de Login */}
-          <button className="bg-primary text-white font-semibold py-2 px-6 rounded-full hover:bg-secondary transition-colors duration-200">
-            Login
+          {/* Botão de Login - Usa a classe CSS pura 'botao-login' */}
+          <button className="botao-login">
+            LOGIN
           </button>
         </div>
 
-        {/* Menu Hamburguer para Mobile (implementar depois) */}
+        {/* Menu Hamburguer (Mobile) */}
         <div className="md:hidden">
-          {/* Ícone de menu */}
+          {/* ... */}
         </div>
       </nav>
     </header>

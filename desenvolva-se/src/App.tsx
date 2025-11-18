@@ -1,19 +1,21 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cabecalho from './components/Cabecalho'; 
-// Ajuste os caminhos das páginas para 'src/components/'
-import Home from './components/Home';      // <--- ATUALIZADO
-import Cursos from './components/Cursos';  // <--- ATUALIZADO
-import Sobre from './components/Sobre';    // <--- ATUALIZADO
-import Contato from './components/Contato';// <--- ATUALIZADO
-import Integrantes from './components/Integrantes'; // <--- ATUALIZADO
+// Importações ajustadas para 'src/components/'
+import Home from './components/Home';      
+import Cursos from './components/Cursos';  
+import Sobre from './components/Sobre';    
+import Contato from './components/Contato';
+import Integrantes from './components/Integrantes';
 
 
 function App() {
   return (
+    // Usa o BrowserRouter para habilitar a navegação
     <BrowserRouter>
-      <Cabecalho />
+      <Cabecalho /> 
       
-      <main className="min-h-screen bg-background text-text p-4 transition-colors duration-300">
+      {/* Classe main usa as variáveis de fundo e texto customizadas */}
+      <main className="min-h-screen bg-background text-text transition-colors duration-300">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cursos" element={<Cursos />} />
