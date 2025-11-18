@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definindo as variáveis CSS para as cores */
+:root {
+  /* Cores para o tema CLARO */
+  --color-primary: #00D1A0; /* Verde Água (Ação/Crescimento) */
+  --color-secondary: #6633FF; /* Roxo Profundo (Tecnologia/Foco) */
+  --color-background: #F4F4F9; /* Branco Quente */
+  --color-text: #333333; /* Texto escuro */
+  --color-card-bg: #FFFFFF;
+}
+
+.dark {
+  /* Cores para o tema ESCURO */
+  --color-primary: #00D1A0; 
+  --color-secondary: #8A63FF; /* Roxo um pouco mais claro para contraste no dark mode */
+  --color-background: #121212; /* Preto Carbono */
+  --color-text: #E0E0E0; /* Texto claro */
+  --color-card-bg: #1F1F1F;
+}
+
+/* Aplicando as fontes */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif; /* Títulos */
+}
+
+body {
+  font-family: 'Inter', sans-serif; /* Corpo */
+  background-color: var(--color-background);
+  color: var(--color-text);
+  /* Transição suave para a troca de tema */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

@@ -1,31 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogoImage from '../assets/logo-desenvolva-se.png';
+// Garanta que o caminho para a sua logo PNG está correto.
+// O Vite normalmente lida com a importação de assets como URLs.
+import LogoImage from '../assets/logo-desenvolva-se.png'; 
 
 const Cabecalho: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = React.useState(false);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle('dark');
+    // Adiciona/remove a classe 'dark' do elemento <html>
+    // Isso é o que o Tailwind usa para alternar os temas
+    document.documentElement.classList.toggle('dark'); 
   };
 
   return (
+    // bg-background DEVE aplicar sua cor de fundo. Se não, o problema está na configuração do Tailwind.
+    // Usamos 'dark:bg-bg-dark' como fallback para debug se 'bg-background' não estiver funcionando
     <header className="bg-background text-text shadow-md sticky top-0 z-50 transition-colors duration-300">
       <nav className="container mx-auto p-4 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center space-x-2">
-          {/* Usando <img> para a logo, que é mais simples por agora */}
+        {/* Bloco da Logo e Título */}
+        <div className="flex items-center space-x-2 min-w-max"> {/* min-w-max para evitar quebras cedo demais */}
           <Link to="/" className="flex items-center">
-            <img src={LogoImage} alt="Logo Desenvolva-se" className="h-8 w-auto mr-2" />
+            <img 
+              src={LogoImage} 
+              alt="Logo Desenvolva-se" 
+              className="h-8 w-auto mr-2 object-contain" // h-8 (32px) e w-auto (largura automática) são cruciais
+            />
             <span className="text-2xl font-title font-bold text-text">
               Desenvolva-se
             </span>
           </Link>
-          <span className="text-xs text-text/80 ml-2 mt-1 hidden sm:block">Seu próximo nível profissional.</span> 
+          {/* Escondido em telas pequenas, visível a partir de sm */}
+          <span className="text-xs text-text/80 ml-2 mt-1 hidden sm:block">Seu próximo nível profissional.</span> 
         </div>
 
         {/* Links de Navegação */}
+        {/* Escondido por padrão, flex a partir de md. */}
         <div className="hidden md:flex items-center space-x-6 font-sans">
           <Link to="/" className="text-text hover:text-primary transition-colors duration-200">Home</Link>
           <Link to="/cursos" className="text-text hover:text-primary transition-colors duration-200">Cursos</Link>
@@ -47,7 +58,7 @@ const Cabecalho: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-4.275l-.707.707M6.343 17.657l-.707.707M16.95 6.343l.707-.707M7.05 16.95l-.707-.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             ) : (
-              <svg className="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-6 w-6 text-gray-800 dark:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
               </svg>
             )}
