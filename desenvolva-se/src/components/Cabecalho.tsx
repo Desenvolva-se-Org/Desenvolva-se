@@ -19,15 +19,15 @@ const Cabecalho: React.FC = () => {
         
         {/* Bloco da Logo e Título (usa style inline para flexbox) */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+          <Link to="/" className="logo-link">
             <img 
               src={LogoImage} 
               alt="Logo Desenvolva-se" 
               className="logo-cabecalho" // Classe pura para tamanho e espaçamento
             />
-            <span className="text-xl font-title font-bold text-text">
-              Desenvolva-se
-            </span>
+          <span className="logo-title">
+            Desenvolva-se
+          </span>
           </Link>
           {/* Slogan usa classes Tailwind que funcionam (fontes) mas o layout está no CSS puro */}
           <span className="text-xs text-text/80 ml-2 mt-1 hidden sm:block">Seu próximo nível profissional.</span> 

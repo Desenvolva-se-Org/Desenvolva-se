@@ -53,7 +53,7 @@ body {
   top: 0;
   z-index: 50;
   transition: background-color 0.3s ease, color 0.3s ease;
-  height: 64px; 
+  height: 76px; 
   border-bottom: 2px solid var(--color-primary);
 }
 
@@ -70,12 +70,28 @@ body {
 }
 
 .logo-cabecalho {
-  height: 32px; /* Força o tamanho da logo PNG */
+  height: 63px; /* Força o tamanho da logo PNG */
   width: auto;
   object-fit: contain;
   margin-right: 0.5rem;
 }
 
+/* Estilos para o título "Desenvolva-se" ao lado da logo */
+.logo-title {
+  font-family: 'Poppins', sans-serif; /* font-title */
+  font-weight: bold; /* font-bold */
+  font-size: 1.25rem; /* text-xl */
+  color: var(--color-primary); /* Cor mais chamativa, usando primary */
+  white-space: nowrap; /* Evita quebra de linha */
+  text-decoration: none; /* Garante que não haja sublinhado */
+}
+
+/* 🚨 NOVO: Estilo para o link da logo (garante que a imagem não tenha sublinhado) */
+.logo-link {
+  display: flex; /* Mantém o display flex para alinhar imagem e texto (se o texto fosse filho) */
+  align-items: center;
+  text-decoration: none; /* Garante que não haja sublinhado no link da imagem */
+}
 /* Estilo para links de navegação (corrigindo sublinhado e espaçamento) */
 .nav-link {
   text-decoration: none; /* Tira o sublinhado */
