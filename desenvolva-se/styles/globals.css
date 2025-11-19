@@ -73,7 +73,7 @@ body {
   height: 63px; /* Força o tamanho da logo PNG */
   width: auto;
   object-fit: contain;
-  margin-right: 0.5rem;
+  margin-right: 2px;
 }
 
 /* Estilos para o título "Desenvolva-se" ao lado da logo */
