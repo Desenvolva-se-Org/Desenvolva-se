@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cabecalho from './components/Cabecalho'; 
 // Importações ajustadas para 'src/components/'
-import Home from './components/Home';      
-import Cursos from './components/Cursos';  
-import Sobre from './components/Sobre';    
-import Contato from './components/Contato';
-import Integrantes from './components/Integrantes';
+import Home from './routes/Home';      
+import Cursos from './routes/Cursos';  
+import Sobre from './routes/Sobre';    
+import Contato from './routes/Contato';
+import Integrantes from './routes/Integrantes';
 
 
 function App() {
