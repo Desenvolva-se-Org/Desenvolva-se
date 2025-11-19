@@ -14,6 +14,7 @@
   --color-background: #F4F4F9; /* Branco Quente */
   --color-text: #333333; /* Texto escuro */
   --color-card-bg: #FFFFFF;
+  --color-text-rgb: 51, 51, 51; /* RGB para cálculo de opacidade */
 }
 
 .dark {
@@ -23,6 +24,7 @@
   --color-background: #121212; /* Preto Carbono */
   --color-text: #E0E0E0; /* Texto claro */
   --color-card-bg: #1F1F1F;
+  --color-text-rgb: 224, 224, 224; /* RGB para cálculo de opacidade */
 }
 
 /* Aplicando as fontes */
@@ -116,4 +118,120 @@ body {
 
 .botao-login:hover {
     background-color: var(--color-secondary); /* Efeito de hover */
+}
+
+/* ----------------------------------------------------------------- */
+/* ESTILOS DE SEÇÃO GERAIS E MAIS OBJETIVOS (Para títulos e descrições de página) */
+/* ----------------------------------------------------------------- */
+
+/* Título principal de uma seção/página */
+.section-title {
+  font-family: 'Poppins', sans-serif; /* font-title */
+  font-weight: bold; /* font-bold */
+  font-size: 3rem;   /* text-5xl */
+  color: var(--color-primary); /* text-primary */
+  margin-bottom: 1rem; /* mb-4 */
+  text-align: center; /* text-center */
+}
+
+/* Descrição/subtítulo de uma seção/página */
+.section-description {
+  font-size: 1.25rem; /* text-xl */
+  color: var(--color-text); /* text-text */
+  opacity: 0.8; /* text-text/80 */
+  max-width: 48rem; /* max-w-2xl */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 3rem; /* mb-12 */
+}
+
+
+/* ----------------------------------------------------------------- */
+/* ESTILOS ESPECÍFICOS PARA OS CARDS DA PÁGINA DE INTEGRANTES */
+/* ----------------------------------------------------------------- */
+
+.membro-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-card-bg); /* bg-cardBg */
+  padding: 1.5rem; /* p-6 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  margin-bottom: 1rem; /* gap-8 no container, mas mb para fallback */
+  width: 100%; /* Default para mobile */
+  max-width: 280px; /* min-w-[280px] */
+  min-height: 400px; /* Altura mínima para padronizar */
+  justify-content: space-between; /* Empurra links para baixo */
+  transition: transform 0.2s ease;
+}
+
+.membro-card:hover {
+  transform: translateY(-5px); /* Efeito sutil de hover */
+}
+
+.membro-foto {
+  width: 8rem;   /* w-32 */
+  height: 8rem;  /* h-32 */
+  border-radius: 9999px; /* rounded-full */
+  object-fit: cover;
+  border: 4px solid var(--color-primary); /* border-4 border-primary */
+  margin-bottom: 1rem; /* space-y-4 */
+}
+
+.membro-nome {
+  font-family: 'Poppins', sans-serif; /* font-title */
+  font-weight: bold; /* font-bold */
+  font-size: 1.5rem; /* text-2xl */
+  color: var(--color-text); /* text-text */
+}
+
+.membro-sobrenome {
+  font-size: 1.125rem; /* text-lg */
+  color: var(--color-text); /* text-text */
+  opacity: 0.8; /* text-text/80 */
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.membro-info-rm-turma {
+  font-size: 0.875rem; /* text-sm */
+  color: var(--color-text); /* text-text */
+  opacity: 0.6; /* text-text/60 */
+  line-height: 1.5; /* Espaçamento entre as linhas */
+}
+
+.membro-links-container {
+  display: flex;
+  gap: 1rem; /* space-x-4 */
+  margin-top: auto; /* Empurra os links para o final do card */
+  padding-top: 1rem; /* pt-4 */
+  border-top: 1px solid rgba(var(--color-text-rgb), 0.2); /* border-t border-text/20 */
+}
+
+.membro-social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space-x-2 */
+  color: var(--color-text); /* text-text */
+  transition: color 0.2s ease; /* transition-colors duration-200 */
+  text-decoration: none; /* Remove sublinhado padrão */
+}
+
+.membro-social-link:hover {
+  color: var(--color-primary); /* hover:text-primary */
+}
+
+.membro-social-icon {
+  width: 1.25rem; /* w-5 */
+  height: 1.25rem; /* h-5 */
+}
+
+/* Container geral dos membros para espaçamento e responsividade */
+.integrantes-grid {
+  display: flex;
+  flex-wrap: wrap; /* flex-wrap */
+  justify-content: center; /* justify-center */
+  gap: 2rem; /* gap-8 */
+  margin-bottom: 2rem;
 }
