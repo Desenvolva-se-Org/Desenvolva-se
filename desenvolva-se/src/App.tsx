@@ -6,6 +6,7 @@ import Cursos from './routes/Cursos';
 import Sobre from './routes/Sobre';    
 import Contato from './routes/Contato';
 import Integrantes from './routes/Integrantes';
+import Rodape from './components/Rodape';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/integrantes" element={<Integrantes />} />
         </Routes>
       </main>
+      <Rodape />
     </BrowserRouter>
   );
 }

@@ -86,7 +86,6 @@ body {
   text-decoration: none; /* Garante que não haja sublinhado */
 }
 
-/* 🚨 NOVO: Estilo para o link da logo (garante que a imagem não tenha sublinhado) */
 .logo-link {
   display: flex; /* Mantém o display flex para alinhar imagem e texto (se o texto fosse filho) */
   align-items: center;
@@ -250,4 +249,139 @@ body {
   justify-content: center; /* justify-center */
   gap: 2rem; /* gap-8 */
   margin-bottom: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------- */
+/* ESTILOS DO RODAPÉ (FOOTER) - ATUALIZADO */
+/* ----------------------------------------------------------------- */
+
+.rodape-base {
+  background-color: var(--color-card-bg); /* Fundo similar ao card para contraste */
+  color: var(--color-text);
+  padding: 2.5rem 1rem; /* Espaçamento interno */
+  border-top: 1px solid rgba(var(--color-text-rgb), 0.1); /* Linha divisória */
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.05), 0 -2px 4px -2px rgba(0, 0, 0, 0.05); /* Sombra para cima */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.rodape-content {
+  max-width: 1280px; /* Largura máxima, alinhando com o cabeçalho */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap; /* Permite quebrar em telas menores */
+  justify-content: space-between; /* Espaço entre as seções */
+  gap: 2rem; /* Espaçamento entre as colunas do rodapé */
+}
+
+/* Seção de Informações (Logo, Slogan, Copyright) */
+.rodape-info-section { /* Nova classe */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha à esquerda */
+  max-width: 250px; /* Largura máxima para esta seção */
+}
+
+.rodape-logo-link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem; /* Espaçamento abaixo da logo */
+  text-decoration: none; /* Remove sublinhado */
+  color: inherit; /* Herda a cor do texto pai */
+}
+
+.rodape-logo-icon {
+  width: 2.5rem; /* Tamanho do ícone */
+  height: 2.5rem;
+  margin-right: 0.5rem;
+}
+
+.rodape-logo-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem; /* Um pouco maior que o cabeçalho */
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.rodape-copyright {
+  font-size: 0.875rem; /* text-sm */
+  color: var(--color-text);
+  opacity: 0.7; /* text-text/70 */
+  margin-top: 0.5rem;
+}
+
+.rodape-slogan {
+  font-size: 0.75rem; /* text-xs */
+  color: var(--color-text);
+  opacity: 0.6; /* text-text/60 */
+  margin-top: 0.25rem; /* Mudei para mais perto da logo */
+  margin-bottom: 0.5rem; /* Espaço antes do copyright */
+}
+
+
+/* Seções de Links de Navegação */
+.rodape-nav-section { /* Nova classe para agrupar links */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Espaçamento entre os links */
+}
+
+.rodape-section-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 1.125rem; /* text-lg */
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.rodape-link { /* Classe única para links de rodapé */
+  color: var(--color-text);
+  opacity: 0.8;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.rodape-link:hover {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+/* Media Query para telas menores */
+@media (max-width: 768px) {
+  .rodape-content {
+    flex-direction: column; /* Empilha as seções */
+    align-items: center; /* Centraliza tudo */
+    text-align: center;
+  }
+  .rodape-info-section { /* Centraliza a seção da logo */
+    align-items: center; 
+    margin-bottom: 1.5rem;
+  }
+  .rodape-nav-section { /* Centraliza links */
+    align-items: center; 
+    margin-bottom: 1.5rem;
+  }
 }

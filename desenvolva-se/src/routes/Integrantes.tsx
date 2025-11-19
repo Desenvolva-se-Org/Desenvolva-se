@@ -85,7 +85,7 @@ const Integrantes: React.FC = () => {
       <div className="text-center mb-12">
         <h1 className="section-title">Conheça Nossa Equipe</h1>
         <p className="section-description">
-          O projeto **Desenvolva-se** foi criado por este time de analistas. A seguir, você encontra os perfis do LinkedIn e GitHub de cada integrante.
+          O projeto 'Desenvolva-se' foi criado por este time de analistas. A seguir, você encontra os perfis do LinkedIn e GitHub de cada integrante.
         </p>
       </div>
 
