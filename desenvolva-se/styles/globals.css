@@ -162,11 +162,113 @@ body {
     border-color: var(--color-primary);
 }
 
+/* src/styles/globals.css */
+
+/* ... (todo o seu CSS existente anterior) ... */
 
 
+/* ----------------------------------------------------------------- */
+/* ESTILOS PARA A PÁGINA DE CURSOS (GRID E CARDS) */
+/* ----------------------------------------------------------------- */
 
+/* Container principal para o conteúdo da página */
+.page-content-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem;
+}
 
+/* Grid responsivo para os cards de cursos */
+.cursos-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Mobile: 1 coluna */
+  gap: 6rem; /* Espaçamento entre os cards */
+  margin-top: 2rem;
+}
 
+/* Breakpoints para Tablets e Desktops */
+@media (min-width: 768px) {
+  .cursos-grid {
+    grid-template-columns: repeat(2, 1fr); /* Tablet: 2 colunas */
+  }
+}
+
+@media (min-width: 1024px) {
+  .cursos-grid {
+    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 colunas */
+  }
+}
+
+/* Estilo do Card do Curso */
+.curso-card {
+  background-color: var(--color-card-bg);
+  border: 1px solid rgba(var(--color-text-rgb), 0.1); /* Borda sutil baseada na cor do texto */
+  border-radius: 1rem; /* Cantos arredondados */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column; /* Organiza conteúdo verticalmente */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* Garante que cards na mesma linha tenham a mesma altura */
+}
+
+/* Efeito de hover no card */
+.curso-card:hover {
+  transform: translateY(-5px); /* Levanta ligeiramente */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05); /* Sombra mais forte */
+  border-color: var(--color-primary); /* Realça a borda com a cor primária */
+}
+
+/* Título do Curso dentro do card */
+.curso-card-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem; /* text-xl */
+  font-weight: bold;
+  color: var(--color-text);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+/* Descrição/Duração do curso */
+.curso-card-description {
+  font-size: 1rem;
+  color: var(--color-text);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  flex-grow: 1; /* Faz essa área crescer para empurrar o botão para baixo */
+}
+
+/* Área do curso */
+.curso-card-area {
+  font-size: 0.875rem; /* text-sm */
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.curso-card-area span {
+  color: var(--color-primary); /* Destaca o nome da área com a cor primária */
+  font-weight: 600;
+}
+
+/* Botão "Ver Detalhes" */
+.curso-card-button {
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%; /* Botão ocupa toda a largura do card */
+  text-align: center;
+  font-size: 1rem;
+}
+
+.curso-card-button:hover {
+  background-color: var(--color-secondary); /* Cor secundária no hover */
+}
 
 /* ================================================================= */
 /* ESTILOS MODERNOS PARA O MODAL DE GERENCIAMENTO DE CLIENTES (FINAL) */
