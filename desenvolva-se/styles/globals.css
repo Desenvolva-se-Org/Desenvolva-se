@@ -726,24 +726,110 @@ body {
 }
 
 
+/* src/styles/globals.css */
+
+/* ... (todo o seu CSS existente) ... */
 
 
+/* ----------------------------------------------------------------- */
+/* ESTILOS PARA A PÁGINA CONTATO */
+/* ----------------------------------------------------------------- */
 
+/* Layout de Grid para a seção de conteúdo */
+.contact-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: 1 coluna empilhada */
+    gap: 4rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 2rem;
+}
 
+/* Breakpoint para Desktop: 2 colunas */
+@media (min-width: 1024px) {
+    .contact-grid-layout {
+        grid-template-columns: 1fr 1.5fr; /* Esquerda menor, Direita (form) maior */
+        align-items: start;
+    }
+}
 
+/* Ajuste para os cards que são links */
+.contact-card-link {
+    text-decoration: none;
+    cursor: pointer;
+}
 
+/* --- ESTILOS DO FORMULÁRIO --- */
 
+.contact-form-container {
+    background-color: var(--color-background);
+    padding: 3rem;
+    border-radius: 1.5rem;
+    border: 2px solid rgba(var(--color-primary-rgb), 0.1);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
 
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
+.form-label {
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    margin-left: 0.25rem;
+}
 
+/* Estilo base para inputs e textarea */
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: 2px solid rgba(var(--color-text-rgb), 0.15);
+    background-color: var(--color-card-bg); /* Fundo ligeiramente diferente do container */
+    color: var(--color-text);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
 
+/* Efeito Neon no Foco dos Inputs */
+.form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 
+        0 0 0 4px rgba(var(--color-primary-rgb), 0.1), /* Anel externo sutil */
+        0 0 15px rgba(var(--color-primary-rgb), 0.2); /* Brilho neon */
+}
 
+.form-textarea {
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+}
 
+/* Botão de Enviar */
+.form-submit-button {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: bold;
+    font-size: 1.125rem;
+    border: none;
+    border-radius: 9999px; /* Pílula */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(var(--color-primary-rgb), 0.2);
+}
 
-
-
-
-
+.form-submit-button:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 10px 15px -3px rgba(var(--color-secondary-rgb), 0.3),
+        0 0 20px rgba(var(--color-secondary-rgb), 0.4); /* Brilho neon no hover */
+}
 
 
 /* ----------------------------------------------------------------- */
