@@ -6,17 +6,13 @@ import LogoIcon from '../assets/logo-desenvolva-se.png'; // Importe o logo se qu
 const Sobre: React.FC = () => {
   return (
     <div className="bg-background">
-      
-      {/* ================= SEÇÃO HERO (RETÂNGULO 1 - MISSÃO) ================= */}
-      {/* Reutilizando a classe 'home-hero-section' para manter o mesmo estilo de fundo */}
       <section className="home-hero-section">
         <div className="home-section-content text-center">
           
           <div className="home-hero-title mb-8">
-            {/* Título principal com fonte bem grande */}
             <h1 className="section-title !text-5xl md:!text-6xl lg:!text-7xl flex items-center justify-center gap-4">
-              {/* Opcional: Incluir o logo pequeno ao lado do título */}
-              {/* <img src={LogoIcon} alt="Ícone Desenvolva-se" className="w-12 h-12 object-contain" /> */}
+              <img src={LogoIcon} alt="Ícone Desenvolva-se" className="home-hero-logo" /> 
+              
               Sobre o Desenvolva-se
             </h1>
           </div>
