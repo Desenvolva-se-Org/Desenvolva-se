@@ -162,11 +162,227 @@ body {
     border-color: var(--color-primary);
 }
 
+/* src/styles/globals.css */
+
+/* ... (todo o seu CSS existente anterior) ... */
 
 
+/* ----------------------------------------------------------------- */
+/* ESTILOS PARA A PÁGINA DE CURSOS (GRID E CARDS) */
+/* ----------------------------------------------------------------- */
+
+/* Container principal para o conteúdo da página */
+.page-content-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem;
+}
+
+/* Grid responsivo para os cards de cursos */
+.cursos-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Mobile: 1 coluna */
+  gap: 6rem; /* Espaçamento entre os cards */
+  margin-top: 2rem;
+}
+
+/* Breakpoints para Tablets e Desktops */
+@media (min-width: 768px) {
+  .cursos-grid {
+    grid-template-columns: repeat(2, 1fr); /* Tablet: 2 colunas */
+  }
+}
+
+@media (min-width: 1024px) {
+  .cursos-grid {
+    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 colunas */
+  }
+}
+
+/* Estilo do Card do Curso */
+.curso-card {
+  background-color: var(--color-card-bg);
+  border: 1px solid rgba(var(--color-text-rgb), 0.1); /* Borda sutil baseada na cor do texto */
+  border-radius: 1rem; /* Cantos arredondados */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column; /* Organiza conteúdo verticalmente */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* Garante que cards na mesma linha tenham a mesma altura */
+}
+
+/* Efeito de hover no card */
+.curso-card:hover {
+  transform: translateY(-5px); /* Levanta ligeiramente */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05); /* Sombra mais forte */
+  border-color: var(--color-primary); /* Realça a borda com a cor primária */
+}
+
+/* Título do Curso dentro do card */
+.curso-card-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem; /* text-xl */
+  font-weight: bold;
+  color: var(--color-text);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+/* Descrição/Duração do curso */
+.curso-card-description {
+  font-size: 1rem;
+  color: var(--color-text);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  flex-grow: 1; /* Faz essa área crescer para empurrar o botão para baixo */
+}
+
+/* Área do curso */
+.curso-card-area {
+  font-size: 0.875rem; /* text-sm */
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.curso-card-area span {
+  color: var(--color-primary); /* Destaca o nome da área com a cor primária */
+  font-weight: 600;
+}
+
+/* Botão "Ver Detalhes" */
+.curso-card-button {
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%; /* Botão ocupa toda a largura do card */
+  text-align: center;
+  font-size: 1rem;
+}
+
+.curso-card-button:hover {
+  background-color: var(--color-secondary); /* Cor secundária no hover */
+}
 
 
+/* ----------------------------------------------------------------- */
+/* ESTILOS PARA A PÁGINA HOME (SEÇÕES E FONTES GRANDES) */
+/* ----------------------------------------------------------------- */
 
+/* Classe utilitária para centralizar o conteúdo dentro das seções */
+.home-section-content {
+    width: 100%;
+    max-width: 1280px; /* Largura máxima padrão */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ================= SEÇÃO HERO (RETÂNGULO 1) ================= */
+.home-hero-section {
+    /* Fundo sutilmente diferente para destacar a seção */
+    background-color: var(--color-background); /* Pode mudar para uma cor levemente diferente se quiser */
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    border-bottom: 1px solid rgba(var(--color-text-rgb), 0.05);
+    /* Adiciona um gradiente sutil no fundo para um toque moderno (opcional) */
+    background-image: linear-gradient(to bottom, var(--color-background), rgba(var(--color-primary-rgb), 0.05));
+}
+
+/* Ajustes no título e logo */
+.home-hero-title h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem; /* Espaço maior entre ícone e texto */
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.home-hero-logo {
+    width: 5rem; /* w-20: Ícone maior */
+    height: 5rem; /* h-20 */
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+
+/* ================= SEÇÃO FEATURES (RETÂNGULO 2) ================= */
+.home-features-section {
+    /* Cor de fundo diferente para criar o "retângulo" */
+    background-color: var(--color-card-bg); /* Usa a cor do card para um contraste suave */
+    padding-top: 6rem;
+    padding-bottom: 8rem;
+    box-shadow: inset 0 10px 20px -10px rgba(0,0,0,0.05); /* Sombra interna sutil no topo */
+}
+
+.section-description-text {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--color-text);
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* Grid de Features */
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem; /* Espaçamento maior entre os cards */
+    width: 100%;
+}
+
+/* ================= FEATURE CARDS (FONTES MAIORES) ================= */
+.feature-card {
+  background-color: var(--color-background); /* Fundo do card volta a ser a cor base */
+  padding: 3rem; /* Mais preenchimento interno */
+  border-radius: 1.5rem; /* Bordas mais arredondadas */
+  border: 2px solid rgba(var(--color-primary-rgb), 0.1); /* Borda um pouco mais espessa */
+  text-align: center;
+  flex: 1 1 300px; /* Base um pouco maior */
+  max-width: 400px; 
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* Espaço maior entre título e texto do card */
+}
+
+.feature-card:hover {
+  transform: translateY(-10px); /* Levanta mais */
+  border-color: var(--color-primary);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+    0 0 20px rgba(var(--color-primary-rgb), 0.3); /* Brilho neon mais forte */
+}
+
+.feature-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 1.75rem; /* FONTES MAIORES NO TÍTULO DO CARD (era 1.25rem) */
+  color: var(--color-primary);
+  margin-bottom: 0;
+}
+
+.feature-card p {
+  font-size: 1.125rem; /* FONTES MAIORES NO TEXTO DO CARD (era 1rem) */
+  color: var(--color-text);
+  opacity: 0.9;
+  line-height: 1.6;
+}
 
 /* ================================================================= */
 /* ESTILOS MODERNOS PARA O MODAL DE GERENCIAMENTO DE CLIENTES (FINAL) */
@@ -510,24 +726,110 @@ body {
 }
 
 
+/* src/styles/globals.css */
+
+/* ... (todo o seu CSS existente) ... */
 
 
+/* ----------------------------------------------------------------- */
+/* ESTILOS PARA A PÁGINA CONTATO */
+/* ----------------------------------------------------------------- */
 
+/* Layout de Grid para a seção de conteúdo */
+.contact-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: 1 coluna empilhada */
+    gap: 4rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 2rem;
+}
 
+/* Breakpoint para Desktop: 2 colunas */
+@media (min-width: 1024px) {
+    .contact-grid-layout {
+        grid-template-columns: 1fr 1.5fr; /* Esquerda menor, Direita (form) maior */
+        align-items: start;
+    }
+}
 
+/* Ajuste para os cards que são links */
+.contact-card-link {
+    text-decoration: none;
+    cursor: pointer;
+}
 
+/* --- ESTILOS DO FORMULÁRIO --- */
 
+.contact-form-container {
+    background-color: var(--color-background);
+    padding: 3rem;
+    border-radius: 1.5rem;
+    border: 2px solid rgba(var(--color-primary-rgb), 0.1);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
 
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
+.form-label {
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    margin-left: 0.25rem;
+}
 
+/* Estilo base para inputs e textarea */
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: 2px solid rgba(var(--color-text-rgb), 0.15);
+    background-color: var(--color-card-bg); /* Fundo ligeiramente diferente do container */
+    color: var(--color-text);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
 
+/* Efeito Neon no Foco dos Inputs */
+.form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 
+        0 0 0 4px rgba(var(--color-primary-rgb), 0.1), /* Anel externo sutil */
+        0 0 15px rgba(var(--color-primary-rgb), 0.2); /* Brilho neon */
+}
 
+.form-textarea {
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+}
 
+/* Botão de Enviar */
+.form-submit-button {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: bold;
+    font-size: 1.125rem;
+    border: none;
+    border-radius: 9999px; /* Pílula */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(var(--color-primary-rgb), 0.2);
+}
 
-
-
-
-
+.form-submit-button:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 10px 15px -3px rgba(var(--color-secondary-rgb), 0.3),
+        0 0 20px rgba(var(--color-secondary-rgb), 0.4); /* Brilho neon no hover */
+}
 
 
 /* ----------------------------------------------------------------- */
