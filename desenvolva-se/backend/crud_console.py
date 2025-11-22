@@ -51,7 +51,6 @@ def exportar_para_json(dados_lista_dicionario, nome_arquivo='exportacao_dados'):
 # ====================================================
 # 3. CRUD: USUARIOS (Implementação C/R/U/D)
 # ====================================================
-# Adaptação para a tabela 'USUARIOS' do banco_gs2.sql: id_usu, nome, idade, profissao_atual, nivel_formacao
 
 def buscar_usuarios_para_exportar():
     """Busca todos os usuários para exportação JSON (READ)."""
@@ -59,7 +58,6 @@ def buscar_usuarios_para_exportar():
     if not conn: return []
     try:
         cursor = conn.cursor()
-        # MUDANÇA: Usando 'USUARIOS' e 'id_usu'
         sql = "SELECT id_usu, nome, idade, profissao_atual, nivel_formacao FROM USUARIOS ORDER BY id_usu"
         cursor.execute(sql)
         
@@ -87,7 +85,6 @@ def listar_usuarios():
 
     print("\n --- Lista de Usuários ---")
     for row in usuarios:
-        # MUDANÇA: Usando a chave 'id_usu'
         print(f"ID: {row['id_usu']:<3} | Nome: {row['nome']:<25} | Idade: {row['idade']:<4} | Profissão: {row['profissao_atual']:<15} | Nível: {row['nivel_formacao']}")
         print('-' * 90)
 
@@ -98,7 +95,6 @@ def adicionar_usuario(nome, idade, profissao_atual, nivel_formacao):
     try:
         cursor = conn.cursor()
         
-        # MUDANÇA: Usando 'USUARIOS' e retornando 'id_usu'
         sql = """
             INSERT INTO USUARIOS (nome, idade, profissao_atual, nivel_formacao)
             VALUES (:1, :2, :3, :4) RETURNING id_usu INTO :id_usu
@@ -125,7 +121,6 @@ def remover_usuario(id_usuario):
     if not conn: return
     try:
         cursor = conn.cursor()
-        # MUDANÇA: Usando 'USUARIOS' e 'id_usu' na cláusula WHERE
         sql = "DELETE FROM USUARIOS WHERE id_usu = :id"
         cursor.execute(sql, {'id': id_usuario})
         conn.commit()
@@ -162,7 +157,6 @@ def atualizar_usuario(id_usuario, novo_nome, nova_idade, nova_profissao):
             print("\n⚠️ AVISO: Nenhum campo para atualizar foi fornecido.")
             return
 
-        # MUDANÇA: Usando 'USUARIOS' e 'id_usu' na cláusula WHERE
         sql = "UPDATE USUARIOS SET " + ', '.join(sets) + " WHERE id_usu = :id"
         params['id'] = id_usuario
 
@@ -187,7 +181,6 @@ def atualizar_usuario(id_usuario, novo_nome, nova_idade, nova_profissao):
 # 4. CRUD: CURSOS (Implementação C/R/U/D)
 # ====================================================
 # Implementação C/R/U/D na tabela 'cursos' (id_curso, nome_curso, area, duracao)
-# (Este bloco já estava correto para a tabela CURSOS, então mantive)
 
 def buscar_cursos_para_exportar():
     """Busca todos os cursos para exportação JSON (READ)."""
@@ -380,7 +373,6 @@ def adicionar_usuario_com_cep():
 # ====================================================
 # 6. MENUS E PROGRAMA PRINCIPAL
 # ====================================================
-# (O restante do código dos menus permanece o mesmo, pois eles apenas chamam as funções acima)
 
 def menu_usuarios():
     # Menu CRUD completo para Usuários
