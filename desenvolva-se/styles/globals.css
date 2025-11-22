@@ -1599,3 +1599,201 @@ img, video {
     .features-grid { gap: 2.5rem; }
     .feature-card { padding: 3rem 2.5rem; }
 }
+
+
+
+
+
+
+
+
+
+/* ================================================================= */
+/* RESPONSIVIDADE: PÁGINA CURSOS */
+/* ================================================================= */
+
+/* --- Estilos Base (XS - Celulares < 576px) --- */
+
+/* Reutiliza o container padrão, mas com margem superior/inferior para a página */
+.page-content-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 3rem auto 5rem; /* Margem vertical para afastar de header/footer */
+    padding: 0 1.5rem; /* Padding lateral de mobile */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Título da Seção */
+.section-title-cursos {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2rem; /* Tamanho mobile */
+    color: var(--color-secondary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Estados de Loading e Erro */
+.loading-container, .error-container, .empty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 1rem;
+    min-height: 300px; /* Garante altura mínima */
+    width: 100%;
+}
+.loading-text {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    opacity: 0.7;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.4; } }
+
+.error-box {
+    background-color: rgba(220, 53, 69, 0.1); /* Fundo vermelho suave */
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    max-width: 90%;
+}
+.error-title { font-weight: 700; display: block; margin-bottom: 0.5rem; }
+.error-hint { font-size: 0.875rem; margin-top: 1rem; display: block; opacity: 0.8; }
+
+.empty-text { font-size: 1.25rem; color: var(--color-text); opacity: 0.7; margin-bottom: 0.5rem; }
+.empty-subtext { font-size: 1rem; color: var(--color-text); opacity: 0.5; }
+
+
+/* --- GRID DE CURSOS (Mobile Base) --- */
+.cursos-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 Coluna por padrão */
+    gap: 1.5rem; /* Espaçamento mobile */
+    width: 100%;
+    justify-items: center; /* Centraliza os cards se forem menores que a coluna */
+}
+
+/* --- CARD DO CURSO (Mobile Base) --- */
+.curso-card {
+    background-color: var(--color-card-bg);
+    border: 1px solid rgba(var(--color-text-rgb), 0.08);
+    border-radius: 1rem;
+    padding: 1.5rem; /* Padding interno menor */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    height: 100%; /* Ocupa toda a altura da célula do grid */
+    width: 100%;
+    max-width: 400px; /* Não fica muito largo em celulares maiores */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    position: relative;
+    overflow: hidden;
+}
+/* Barra superior colorida (reutiliza a lógica dos feature cards) */
+.curso-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: var(--color-primary); /* Cor padrão */
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+}
+/* Exemplo de variação por área (você pode adicionar mais no React) */
+.curso-card[data-area="Tecnologia"]::before { background: var(--color-secondary); }
+
+.curso-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    border-color: transparent;
+}
+.curso-card:hover::before { transform: scaleX(1); }
+
+.curso-card-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem; /* Título mobile */
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+.curso-card-description {
+    font-size: 0.95rem; /* Texto mobile */
+    color: var(--color-text);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Empurra o conteúdo inferior para baixo */
+    line-height: 1.5;
+}
+.curso-card-footer {
+    margin-top: auto; /* Garante que fique no fundo do card */
+    padding-top: 1rem;
+    border-top: 1px solid rgba(var(--color-text-rgb), 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text);
+    opacity: 0.9;
+}
+.curso-info-item { display: flex; align-items: center; gap: 0.5rem; }
+.info-icon { font-size: 1rem; }
+.info-highlight { font-weight: 600; color: var(--color-primary); }
+
+.curso-card-button {
+    margin-top: 1.5rem;
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%; /* Botão largura total no mobile */
+    text-align: center;
+    font-size: 1rem;
+}
+.curso-card-button:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(var(--color-secondary-rgb), 0.2);
+}
+
+
+/* --- Breakpoint SM (Celulares maiores ≥ 576px) --- */
+@media (min-width: 576px) {
+    .page-content-container { padding: 0 2rem; }
+    .section-title-cursos { font-size: 2.5rem; }
+}
+
+
+/* --- Breakpoint MD (Tablets ≥ 768px) --- */
+@media (min-width: 768px) {
+    .page-content-container { margin: 4rem auto 6rem; }
+    .cursos-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 Colunas */
+        gap: 2rem; /* Espaçamento maior */
+    }
+    .curso-card {
+        padding: 2rem; /* Padding interno padrão */
+        max-width: none; /* Remove restrição de largura */
+    }
+    .curso-card-title { font-size: 1.5rem; }
+    .curso-card-description { font-size: 1rem; }
+    .curso-card-footer { flex-direction: row; justify-content: space-between; }
+}
+
+
+/* --- Breakpoint LG (Laptops/Desktops ≥ 992px) --- */
+@media (min-width: 992px) {
+    .page-content-container { margin: 5rem auto 8rem; }
+    .section-title-cursos { font-size: 3rem; margin-bottom: 3rem; }
+    .cursos-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 Colunas */
+        gap: 2.5rem; /* Espaçamento generoso */
+    }
+}
