@@ -1797,3 +1797,460 @@ img, video {
         gap: 2.5rem; /* Espaçamento generoso */
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================================================= */
+/* RESPONSIVIDADE: PÁGINA SOBRE */
+/* ================================================================= */
+
+/* --- Estilos Base (XS - Celulares < 576px) --- */
+
+.about-wrapper {
+    background-color: var(--color-background);
+    width: 100%;
+}
+
+/* Reutiliza o container padrão */
+.about-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* === SEÇÃO HERO (Mobile) === */
+.about-hero-section {
+    padding: 4rem 0; /* Espaçamento reduzido */
+    background-color: var(--color-background);
+    border-bottom: 1px solid rgba(var(--color-text-rgb), 0.05);
+}
+
+/* Título e Logo */
+.about-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 2.25rem; /* Fonte bem menor para mobile */
+    color: var(--color-text);
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column; /* Empilha logo e texto no celular */
+    align-items: center;
+    gap: 1rem;
+}
+
+.about-logo {
+    width: 3.5rem; /* Logo menor */
+    height: 3.5rem;
+    object-fit: contain;
+}
+
+/* Missão */
+.about-mission {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem; /* Fonte menor */
+    color: var(--color-primary);
+    line-height: 1.4;
+    max-width: 100%;
+}
+
+
+/* === SEÇÃO CONTEÚDO (Mobile) === */
+.about-content-section {
+    padding: 4rem 0 6rem;
+    background-color: rgba(var(--color-card-bg-rgb), 0.5);
+}
+
+.about-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2rem; /* Título de seção menor */
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.about-text {
+    font-size: 1rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+
+/* === GRID DE VALORES (Mobile - 1 Coluna) === */
+.values-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Força 1 coluna no mobile */
+    gap: 1.5rem;
+    justify-items: center;
+    margin-top: 2rem;
+}
+
+/* Cards de Valores */
+.value-card {
+    background-color: var(--color-card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(var(--color-text-rgb), 0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    width: 100%;
+    max-width: 350px; /* Largura máxima para não esticar demais */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    border-color: var(--color-primary);
+}
+
+.value-icon {
+    font-size: 2.5rem; /* Emoji menor */
+    margin-bottom: 0.5rem;
+}
+
+.value-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: 0;
+}
+
+.value-text {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+
+/* --- Breakpoint SM (Celulares maiores ≥ 576px) --- */
+@media (min-width: 576px) {
+    .about-container { padding: 0 2rem; }
+    .about-title { font-size: 2.75rem; }
+    .about-mission { font-size: 1.5rem; }
+}
+
+
+/* --- Breakpoint MD (Tablets ≥ 768px) --- */
+@media (min-width: 768px) {
+    /* Hero */
+    .about-hero-section { padding: 6rem 0; }
+    .about-title {
+        flex-direction: row; /* Logo ao lado do texto */
+        justify-content: center;
+        font-size: 3.5rem;
+        gap: 1.5rem;
+    }
+    .about-logo { width: 4.5rem; height: 4.5rem; }
+    .about-mission { font-size: 1.75rem; max-width: 800px; margin: 0 auto; }
+
+    /* Conteúdo */
+    .about-content-section { padding: 5rem 0 7rem; }
+    .about-section-title { font-size: 2.5rem; }
+    .about-text { font-size: 1.125rem; }
+
+    /* Grid de Valores - Tenta 3 colunas, se não der, usa 2 ou 1 */
+    .values-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+    .value-card { padding: 2.5rem 2rem; max-width: none; } /* Remove max-width */
+    .value-icon { font-size: 3rem; }
+    .value-title { font-size: 1.5rem; }
+}
+
+
+/* --- Breakpoint LG (Laptops/Desktops ≥ 992px) --- */
+@media (min-width: 992px) {
+    .about-hero-section { padding: 8rem 0; }
+    .about-title { font-size: 4.5rem; }
+    .about-mission { font-size: 2rem; max-width: 900px; }
+
+    .about-content-section { padding: 6rem 0 8rem; }
+    .about-section-title { font-size: 3rem; }
+
+    /* Grid de Valores - Garante 3 colunas em telas grandes */
+    .values-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+    .value-card { padding: 3rem 2rem; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================================================= */
+/* RESPONSIVIDADE: PÁGINA CONTATO */
+/* ================================================================= */
+
+/* --- Estilos Base (XS - Celulares < 576px) --- */
+
+.contact-wrapper {
+    background-color: var(--color-background);
+    width: 100%;
+}
+
+/* Reutiliza o container padrão com ajustes */
+.contact-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* === SEÇÃO HERO (Mobile) === */
+.contact-hero-section {
+    padding: 4rem 0; /* Espaçamento reduzido */
+    background-color: var(--color-background);
+    border-bottom: 1px solid rgba(var(--color-text-rgb), 0.05);
+    text-align: center;
+}
+
+/* Título e Logo */
+.contact-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 2.25rem; /* Fonte menor para mobile */
+    color: var(--color-secondary); /* Cor secundária (roxo) */
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column; /* Empilha no mobile */
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-logo {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: contain;
+}
+
+/* Descrição */
+.contact-description {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem; /* Fonte menor */
+    color: var(--color-text);
+    line-height: 1.4;
+    max-width: 100%;
+}
+
+
+/* === SEÇÃO CONTEÚDO (Mobile) === */
+.contact-content-section {
+    padding: 4rem 0 6rem;
+    background-color: rgba(var(--color-card-bg-rgb), 0.5);
+}
+
+/* Layout do Grid Principal (Mobile - 1 Coluna empilhada) */
+.contact-grid-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* Espaço entre os blocos de canais e formulário */
+    width: 100%;
+    max-width: 500px; /* Limita largura no mobile para não esticar demais */
+    margin: 0 auto;
+}
+
+/* Colunas internas */
+.contact-info-column, .contact-form-column {
+    width: 100%;
+}
+
+/* Títulos das seções internas */
+.contact-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    text-align: center; /* Centralizado no mobile */
+}
+
+
+/* --- CARDS DE CANAIS (Mobile) --- */
+.contact-channel-card {
+    background-color: var(--color-card-bg);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(var(--color-text-rgb), 0.08);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none; /* Para links */
+    color: var(--color-text);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+/* Hover apenas para dispositivos que suportam (evita "stickiness" no touch) */
+@media (hover: hover) {
+    .contact-channel-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+        border-color: var(--color-primary);
+    }
+}
+
+.contact-channel-icon {
+    font-size: 2rem;
+}
+
+.contact-channel-info h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.contact-channel-info p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    word-break: break-all; /* Garante que emails longos não quebrem o layout */
+}
+
+
+/* --- FORMULÁRIO (Mobile Base) --- */
+.contact-form-container {
+    background-color: var(--color-background);
+    padding: 1.5rem; /* Padding menor no mobile */
+    border-radius: 1rem;
+    border: 2px solid rgba(var(--color-primary-rgb), 0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Grid para campos lado a lado (Empilha no mobile) */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+/* Estilos dos inputs (Reutilizados e ajustados) */
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-label { font-weight: 600; color: var(--color-text); font-size: 0.95rem; margin-left: 0.25rem; }
+.form-input, .form-textarea {
+    width: 100%; padding: 0.8rem; border-radius: 0.75rem;
+    border: 2px solid rgba(var(--color-text-rgb), 0.15);
+    background-color: var(--color-card-bg); color: var(--color-text);
+    font-family: 'Inter', sans-serif; font-size: 1rem; transition: all 0.3s ease;
+}
+.form-input:focus, .form-textarea:focus {
+    outline: none; border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.1);
+}
+.form-textarea { resize: vertical; }
+.form-submit-button {
+    width: 100%; padding: 1rem; background-color: var(--color-primary);
+    color: white; font-weight: bold; font-size: 1.125rem; border: none;
+    border-radius: 9999px; cursor: pointer; transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(var(--color-primary-rgb), 0.2);
+}
+@media (hover: hover) {
+    .form-submit-button:hover {
+        background-color: var(--color-secondary); transform: translateY(-3px);
+        box-shadow: 0 10px 15px -3px rgba(var(--color-secondary-rgb), 0.3);
+    }
+}
+
+
+/* --- Breakpoint SM (Celulares maiores ≥ 576px) --- */
+@media (min-width: 576px) {
+    .contact-container { padding: 0 2rem; }
+    .contact-title { font-size: 2.75rem; }
+    .contact-description { font-size: 1.5rem; }
+    .contact-form-container { padding: 2rem; }
+}
+
+
+/* --- Breakpoint MD (Tablets ≥ 768px) --- */
+@media (min-width: 768px) {
+    /* Hero */
+    .contact-hero-section { padding: 6rem 0; }
+    .contact-title {
+        flex-direction: row; /* Logo ao lado do título */
+        justify-content: center;
+        font-size: 3.5rem;
+        gap: 1.5rem;
+    }
+    .contact-logo { width: 4.5rem; height: 4.5rem; }
+    .contact-description { font-size: 1.75rem; max-width: 800px; }
+
+    /* Conteúdo */
+    .contact-content-section { padding: 5rem 0 7rem; }
+    
+    /* Grid Principal - Vira 2 colunas */
+    .contact-grid-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr; /* Esquerda menor, direita maior */
+        gap: 3rem;
+        max-width: none; /* Remove limite de largura */
+        align-items: start;
+    }
+
+    .contact-section-title {
+        text-align: left; /* Alinha à esquerda */
+        font-size: 2rem;
+    }
+
+    /* Cards */
+    .contact-channel-card { padding: 2rem; gap: 1.5rem; }
+    .contact-channel-icon { font-size: 2.5rem; }
+    .contact-channel-info h3 { font-size: 1.25rem; }
+    .contact-channel-info p { font-size: 1rem; }
+
+    /* Form */
+    .contact-form-container { padding: 2.5rem; }
+    .form-grid-2 { grid-template-columns: 1fr 1fr; gap: 1.5rem; } /* Campos lado a lado */
+    .form-submit-button { width: auto; padding: 1rem 2.5rem; } /* Botão não ocupa tudo */
+}
+
+
+/* --- Breakpoint LG (Laptops/Desktops ≥ 992px) --- */
+@media (min-width: 992px) {
+    .contact-hero-section { padding: 8rem 0; }
+    .contact-title { font-size: 4.5rem; }
+    .contact-description { font-size: 2rem; max-width: 900px; }
+
+    .contact-content-section { padding: 6rem 0 8rem; }
+    .contact-grid-layout { gap: 5rem; }
+
+    .contact-channel-card { padding: 2.5rem; }
+}
