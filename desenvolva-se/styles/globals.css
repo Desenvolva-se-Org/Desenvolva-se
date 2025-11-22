@@ -9,6 +9,18 @@
   --color-text-rgb: 51, 51, 51; /* RGB para cálculo de opacidade */
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding/border não aumentem a largura */
+}
+
+html {
+    /* Evita a barra de rolagem horizontal em toda a aplicação */
+    overflow-x: hidden; 
+    width: 100%;
+}
+
 .dark {
   /* Cores para o tema ESCURO */
   --color-primary: #00D1A0; 
@@ -25,13 +37,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  font-family: 'Inter', sans-serif; /* Corpo */
-  background-color: var(--color-background);
-  color: var(--color-text);
-  /* Transição suave para a troca de tema */
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin: 0; /* Remove margem padrão do body */
+    /* Define cores e fontes padrão */
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: 'Inter', sans-serif;
+    /* Garante que o corpo também não cause overflow */
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    min-height: 100vh; /* Garante que o corpo ocupe pelo menos a altura da tela */
 }
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
 
 /* ----------------------------------------------------------------- */
 /* CSS DO CABEÇALHO */
@@ -1100,3 +1121,186 @@ body {
   }
 }
 
+
+
+
+
+
+
+
+/* ================================================================= */
+/* RESPONSIVIDADE: CABEÇALHO */
+/* ================================================================= */
+
+/* ================================================================= */
+/* RESPONSIVIDADE: CABEÇALHO (CORRIGIDO) */
+/* ================================================================= */
+
+/* --- Estilos Base (XS e SM - Celulares < 768px) --- */
+.cabecalho-base {
+    height: 70px; /* Altura ligeiramente menor no mobile */
+}
+
+.navegacao-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* Em telas pequenas, os links do meio somem para dar espaço */
+    justify-content: space-between; 
+    /* IMPORTANTE: Garante que não quebre linha em telas muito pequenas */
+    flex-wrap: nowrap; 
+}
+
+.logo-cabecalho {
+    height: 40px; /* Logo menor para economizar espaço */
+}
+
+.logo-title {
+    font-size: 1rem; /* Título menor */
+    white-space: nowrap; /* Impede que o título quebre em duas linhas */
+}
+
+/* ESCONDE os links de navegação centrais no mobile e tablets retrato */
+.nav-links-container {
+    display: none; 
+}
+
+.botao-login {
+    padding: 0.5rem 1rem; /* Botão menor e mais compacto */
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+.action-buttons-container {
+    gap: 0.5rem; /* Menos espaço entre os botões de ação */
+}
+
+
+/* --- Breakpoint SM (Celulares maiores ≥ 576px) --- */
+@media (min-width: 576px) {
+    .logo-cabecalho { height: 45px; }
+    .logo-title { font-size: 1.1rem; }
+    .botao-login { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+}
+
+
+/* --- Breakpoint MD (Tablets retrato ≥ 768px) --- */
+@media (min-width: 768px) {
+    .cabecalho-base {
+        height: 80px; /* Altura padrão */
+    }
+
+    .navegacao-content {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .logo-cabecalho {
+        height: 50px; /* Logo tamanho médio */
+    }
+    .logo-title { font-size: 1.25rem; }
+
+    
+    .botao-login {
+        padding: 0.7rem 1.5rem; 
+        font-size: 0.95rem;
+    }
+    .action-buttons-container { gap: 1rem; }
+}
+
+
+/* --- Breakpoint LG (Laptops/Desktops/Tablets paisagem ≥ 992px) --- */
+@media (min-width: 992px) {
+    .logo-cabecalho { height: 55px; /* Logo tamanho padrão */ }
+
+    /* AGORA SIM, MOSTRA os links de navegação */
+    .nav-links-container {
+        display: flex;
+        gap: 2rem; /* Espaçamento inicial */
+    }
+    
+    .botao-login {
+        padding: 0.75rem 2rem; /* Botão tamanho padrão */
+        font-size: 1rem;
+    }
+}
+
+
+/* --- Breakpoint XL (Telas muito largas ≥ 1200px) --- */
+@media (min-width: 1200px) {
+    .nav-links-container {
+        gap: 3rem; /* Espaçamento mais generoso se houver tela sobrando */
+    }
+}
+
+
+
+/* ================================================================= */
+/* RESPONSIVIDADE: RODAPÉ */
+/* ================================================================= */
+
+/* --- Estilos Base (XS - Celulares pequenos) --- */
+.rodape-base {
+    padding: 3rem 1rem; /* Padding ajustado para mobile */
+}
+
+.rodape-content {
+    display: flex;
+    flex-direction: column; /* EMPILHA as seções verticalmente */
+    align-items: center; /* Centraliza tudo no mobile */
+    text-align: center;
+    gap: 3rem; /* Espaço grande entre as seções empilhadas */
+}
+
+/* Seção da esquerda (Logo/Copy) centralizada */
+.rodape-info-section {
+    align-items: center; 
+    max-width: 100%;
+}
+
+/* Ajuste de links para ficarem centralizados e fáceis de clicar */
+.rodape-link {
+    padding: 0.5rem; /* Área de clique maior no mobile */
+    display: block;
+}
+
+
+/* --- Breakpoint SM (Celulares maiores ≥ 576px) --- */
+@media (min-width: 576px) {
+    /* Talvez reduzir um pouco o gap se necessário */
+    .rodape-content {
+        gap: 2.5rem;
+    }
+}
+
+
+/* --- Breakpoint MD (Tablets ≥ 768px) --- */
+@media (min-width: 768px) {
+    .rodape-base {
+        padding: 4rem 2rem;
+    }
+
+    .rodape-content {
+        flex-direction: row; /* VOLTA a ficar lado a lado */
+        align-items: flex-start; /* Alinha ao topo */
+        text-align: left; /* Alinha texto à esquerda */
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .rodape-info-section {
+        align-items: flex-start; /* Alinha logo à esquerda */
+        max-width: 300px;
+    }
+
+    .rodape-link {
+        padding: 0; /* Remove padding extra do mobile */
+        display: inline-block; /* Ou block, dependendo da sua estrutura original */
+    }
+}
+
+
+/* --- Breakpoint LG (Desktops ≥ 992px) --- */
+@media (min-width: 992px) {
+    .rodape-content {
+        gap: 4rem; /* Mais espaço horizontal entre as colunas */
+    }
+}
