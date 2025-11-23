@@ -89,7 +89,7 @@ http://localhost:5173/
 
 ## Estrutura de pastas
 
-![img pastas](image.png)
+![img pastas](./desenvolva-se/src/assets/image.png)
 
 
 ## Autores e Créditos
@@ -100,15 +100,15 @@ http://localhost:5173/
 
 ## Screenshots e demonstração
 
-![Página Home](src/assets/image-1.png)
+![Página Home](./desenvolva-se/src/assets/image-1.png)
 
-![Página Sobre](src/assets/image-2.png)
+![Página Sobre](./desenvolva-se/src/assets/image-2.png)
 
-![Página Cursos](src/assets/image-3.png)
+![Página Cursos](./desenvolva-se/src/assets/image-3.png)
 
-![Página Contato](src/assets/image-4.png)
+![Página Contato](./desenvolva-se/src/assets/image-4.png)
 
-![Responsividade](src/assets/image-5.png)
+![Responsividade](./desenvolva-se/src/assets/image-5.png)
 
 
 ## Links
