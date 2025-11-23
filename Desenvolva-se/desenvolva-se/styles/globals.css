@@ -2412,3 +2412,19 @@ img, video {
     row-gap: 1.25rem !important;
   }
 }
+
+/* Centralizar totalmente a seção "Nossos Valores Fundamentais" */
+.values-grid {
+    justify-items: center !important;   /* Centraliza cada card */
+    justify-content: center !important; /* Centraliza o grid como bloco */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;      /* Centraliza textos internos */
+}
+
+.about-values-title,
+.about-section-title {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
