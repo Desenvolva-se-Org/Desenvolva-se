@@ -12,7 +12,6 @@ const Sobre: React.FC = () => {
         <div className="about-container text-center">
           
           <div className="about-hero-header mb-6 md:mb-8">
-            {/* Título e Logo agrupados */}
             <h1 className="about-title">
               <img
                 src={LogoIcon}
@@ -23,7 +22,6 @@ const Sobre: React.FC = () => {
             </h1>
           </div>
           
-          {/* Missão */}
           <p className="about-mission">
             Nossa missão é impulsionar a requalificação profissional com tecnologia, inteligência e propósito.
           </p>
@@ -36,24 +34,25 @@ const Sobre: React.FC = () => {
       <section className="about-content-section">
         <div className="about-container">
 
-          {/* Bloco de Visão + Valores no mesmo container */}
-          <div className="about-block text-center">
+          {/* Bloco de Visão separado */}
+          <div className="about-block text-center about-vision-block">
             <h2 className="about-section-title text-secondary">
               Nossa Visão
             </h2>
 
             <p className="about-text max-w-3xl mx-auto">
-              Acreditamos em um futuro onde a adaptação profissional é contínua e acessível. Queremos ser a ponte que conecta pessoas às oportunidades da economia digital, usando a IA como uma ferramenta de empoderamento, não de substituição.
+              Acreditamos em um futuro onde a adaptação profissional é contínua e acessível.
+              Queremos ser a ponte que conecta pessoas às oportunidades da economia digital,
+              usando a IA como uma ferramenta de empoderamento, não de substituição.
             </p>
+          </div>
 
-            {/* ESPAÇADOR ENTRE VISÃO E VALORES */}
-            <div className="mt-10 md:mt-16"></div>
-
-            <h2 className="about-section-title mb-8 md:mb-10">
+          {/* Bloco de Valores */}
+          <div className="about-block text-center">
+            <h2 className="about-section-title about-values-title">
               Nossos Valores Fundamentais
             </h2>
 
-            {/* Grid de Valores */}
             <div className="values-grid">
               
               {/* Card 1 */}

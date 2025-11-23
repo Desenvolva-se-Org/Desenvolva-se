@@ -2375,3 +2375,26 @@ img, video {
 .contact-channel-card {
     margin-bottom: 0.5rem;
 }
+
+/* --- Espaçamento específico entre VISÃO e VALORES --- */
+
+/* Bloco da Visão (título + texto) */
+.about-vision-block {
+    max-width: 48rem;
+    margin: 0 auto;
+    margin-bottom: 3rem; /* Espaço padrão entre visão e valores */
+}
+
+/* Em telas médias pra cima aumenta o respiro */
+@media (min-width: 768px) {
+    .about-vision-block {
+        margin-bottom: 4.5rem; /* ~72px */
+    }
+}
+
+/* Título da seção de valores com espaço reforçado */
+.about-values-title {
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+
