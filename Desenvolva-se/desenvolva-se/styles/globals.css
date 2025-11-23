@@ -2398,3 +2398,17 @@ img, video {
     margin-bottom: 2.5rem;
 }
 
+/* Deixar os cards MUITO mais próximos no desktop */
+@media (min-width: 992px) {
+  .integrantes-grid {
+    column-gap: 0.5rem !important; /* espaço horizontal quase zero */
+    row-gap: 1rem !important;       /* vertical reduzido */
+  }
+}
+
+@media (min-width: 1200px) {
+  .integrantes-grid {
+    column-gap: 0.75rem !important; 
+    row-gap: 1.25rem !important;
+  }
+}
