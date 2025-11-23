@@ -1,64 +1,127 @@
 # 📘 Desenvolva-se — Plataforma Web
 
-Projeto desenvolvido em **React + Vite** para criar uma plataforma institucional moderna, responsiva e acessível, com páginas como Home, Sobre, Cursos e Contato.
+## 📌 Status do Projeto  
+✔️ **Concluído / Entregue**
+
+---
+
+## 📄 Sumário
+1. [Descrição](#descrição)  
+2. [Sobre o Projeto](#sobre-o-projeto)  
+3. [Tecnologias Utilizadas](#tecnologias-utilizadas)  
+4. [Instalação](#instalação)  
+5. [Como Usar](#como-usar)  
+6. [Endpoints](#endpoints)  
+7. [Estrutura de Pastas](#estrutura-de-pastas)  
+8. [Autores e Créditos](#autores-e-créditos)  
+9. [Screenshots e Demonstração](#screenshots-e-demonstração)  
+10. [Links](#links)
+
+---
+
+## 📖 Descrição
+O **Desenvolva-se** é uma plataforma web criada para fornecer informações institucionais e educacionais, com páginas de Home, Sobre, Cursos e Contato.  
+Desenvolvida com foco em **responsividade, acessibilidade e boa organização de código**.
+
+---
+
+## 🧠 Sobre o Projeto
+O objetivo do sistema é oferecer uma interface moderna e acessível, permitindo expansão futura para novos módulos, como integração com APIs, autenticação e dashboards administrativos.  
+A plataforma utiliza componentes reutilizáveis, estilização centralizada e uma arquitetura simples de manter.
 
 ---
 
 ## 🚀 Tecnologias Utilizadas
 
-- **React + Vite**
-- **TypeScript**
-- **TailwindCSS**
-- **CSS Global (custom classes e variáveis)**
-- **Git Flow**
+### Frontend
+- React + Vite  
+- TypeScript  
+- TailwindCSS  
+- CSS Global  
+- Git Flow  
+
+### Backend
+- API em Java  
+  Repositório: https://github.com/Claytonasantos/API_JAVA_DESENVOLVA_SE  
+- API auxiliar em Python (Flask)  
+  Utilizada para o formulário de contato.
 
 ---
 
-## 📂 Estrutura do Projeto
+## 🛠️ Instalação
 
-src/
-├─ assets/
-├─ components/
-├─ routes/
-├─ styles/
-├─ App.tsx
-└─ main.tsx
+### 1 Clonar o repositório:
 
-## 🛠️ Como Rodar
+git clone https://github.com/Claytonasantos/desenvolva-se.git
 
-1. abrir o cmd do vs code e ir no caminho da pasta:
+### 2 abra o terminal do vscode na versao de cmd e digite para acessar a pasta:
+
 cd desenvolva-se
 
-2. Instalar dependências:
+### 3 instalar dependencias
+
 npm install
 
-3. Inicializar a API de python:
+### 4 iniciar a api de python
+
 python backend/app.py
 
+### 5 rodar o projeto
 
-4. Rodar em ambiente de desenvolvimento:
 npm run dev
 
----
+## Como Usar
 
-## 🧩 Funcionalidades
+http://localhost:5173/
 
-- Layout totalmente responsivo
-- Componentização limpa
-- Página de contatos com formulário funcional
-- Estilização global com Tailwind
-- Organização usando Git Flow
-- Estrutura escalável para futuros módulos
 
-## 📄 Licença
+## Endpoints
 
-Este projeto é apenas acadêmico e não possui fins comerciais.
+/ - pagina inicial
 
----
+/curso - acessa os cursos disponíveis (Implementado no Front End)
 
-## 👨‍💻 Desenvolvido por  
-Equipe InovaSharp – FIAP  
+/usuario - acessa os usuarios disponiveis
 
--   Guilherme Sola Garcia (RM: 563674)
+/profissao - acessa as profissões disponíveis
+
+/recomendacao - acessa os indices de cada curso
+
+## Estrutura de pastas
+
+![img pastas](./desenvolva-se/src/assets/image.png)
+
+
+## Autores e Créditos
+
 -   Clayton Alves dos Santos (RM: 562285)
+-   Guilherme Sola Garcia (RM: 563674)
 -   Pedro Santos Pequini (RM: 561842)
+
+## Screenshots e demonstração
+
+![Página Home](./desenvolva-se/src/assets/image-1.png)
+
+![Página Sobre](./desenvolva-se/src/assets/image-2.png)
+
+![Página Cursos](./desenvolva-se/src/assets/image-3.png)
+
+![Página Contato](./desenvolva-se/src/assets/image-4.png)
+
+![Responsividade](./desenvolva-se/src/assets/image-5.png)
+
+
+## Links
+
+### Link do Repositório
+
+https://github.com/Desenvolva-se-Org/Desenvolva-se.git
+
+### API de Java
+
+https://github.com/Claytonasantos/API_JAVA_DESENVOLVA_SE
+
+
+### Video do YouTube
+
+https://youtu.be/fe2X7dMMovo?si=yTZf3elbrKKOknLb
