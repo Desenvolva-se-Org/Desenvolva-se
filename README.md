@@ -89,7 +89,8 @@ http://localhost:5173/
 
 ## Estrutura de pastas
 
-![img pastas](./desenvolva-se/src/assets/image.png)
+<img width="298" height="556" alt="image" src="https://github.com/user-attachments/assets/abd40160-d174-4fef-929c-ffee832afcd0" />
+
 
 
 ## Autores e Créditos
@@ -100,15 +101,17 @@ http://localhost:5173/
 
 ## Screenshots e demonstração
 
-![Página Home](./desenvolva-se/src/assets/image-1.png)
+<img width="1365" height="599" alt="image" src="https://github.com/user-attachments/assets/b6cc2e66-aee3-445f-ac46-862eddd37042" />
 
-![Página Sobre](./desenvolva-se/src/assets/image-2.png)
+<img width="1365" height="598" alt="image" src="https://github.com/user-attachments/assets/c8eb9899-2869-41e1-aba0-de5cee02fe70" />
 
-![Página Cursos](./desenvolva-se/src/assets/image-3.png)
+<img width="1365" height="600" alt="image" src="https://github.com/user-attachments/assets/14ca0ca4-3650-4c68-a053-2817549ae720" />
 
-![Página Contato](./desenvolva-se/src/assets/image-4.png)
+<img width="1365" height="598" alt="image" src="https://github.com/user-attachments/assets/041724d8-d44c-46db-9b8c-84cd26002101" />
 
-![Responsividade](./desenvolva-se/src/assets/image-5.png)
+<img width="1365" height="601" alt="image" src="https://github.com/user-attachments/assets/5b44a799-d755-499a-88e9-a20994e85601" />
+
+<img width="1365" height="601" alt="image" src="https://github.com/user-attachments/assets/5376da54-5898-4130-a9d8-423c81018b10" />
 
 
 ## Links
