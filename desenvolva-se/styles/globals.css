@@ -1,20 +1,24 @@
-/* src/styles/globals.css */
-
-/*
-  ATENÇÃO: As diretivas @tailwind foram removidas.
-  Este arquivo usa classes CSS puras para formatar o cabeçalho,
-  garantindo que o layout funcione mesmo sem a compilação total do PostCSS.
-*/
-
 /* Definindo as variáveis CSS para as cores */
 :root {
   /* Cores para o tema CLARO */
-  --color-primary: #00D1A0; /* Verde Água (Ação/Crescimento) */
-  --color-secondary: #6633FF; /* Roxo Profundo (Tecnologia/Foco) */
+  --color-primary: #00D1A0; /* Verde Água  */
+  --color-secondary: #6633FF; /* Roxo Profundo  */
   --color-background: #F4F4F9; /* Branco Quente */
   --color-text: #333333; /* Texto escuro */
   --color-card-bg: #FFFFFF;
   --color-text-rgb: 51, 51, 51; /* RGB para cálculo de opacidade */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding/border não aumentem a largura */
+}
+
+html {
+    /* Evita a barra de rolagem horizontal em toda a aplicação */
+    overflow-x: hidden; 
+    width: 100%;
 }
 
 .dark {
@@ -33,13 +37,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  font-family: 'Inter', sans-serif; /* Corpo */
-  background-color: var(--color-background);
-  color: var(--color-text);
-  /* Transição suave para a troca de tema */
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin: 0; /* Remove margem padrão do body */
+    /* Define cores e fontes padrão */
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: 'Inter', sans-serif;
+    /* Garante que o corpo também não cause overflow */
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    min-height: 100vh; /* Garante que o corpo ocupe pelo menos a altura da tela */
 }
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
 
 /* ----------------------------------------------------------------- */
 /* CSS DO CABEÇALHO */
@@ -162,9 +175,11 @@ body {
     border-color: var(--color-primary);
 }
 
-/* src/styles/globals.css */
 
-/* ... (todo o seu CSS existente anterior) ... */
+
+
+
+
 
 
 /* ----------------------------------------------------------------- */
@@ -203,7 +218,7 @@ body {
 /* Estilo do Card do Curso */
 .curso-card {
   background-color: var(--color-card-bg);
-  border: 1px solid rgba(var(--color-text-rgb), 0.1); /* Borda sutil baseada na cor do texto */
+  border: 1px solid rgba(var(--color-text-rgb), 0.1); 
   border-radius: 1rem; /* Cantos arredondados */
   padding: 1.5rem;
   display: flex;
@@ -270,6 +285,13 @@ body {
   background-color: var(--color-secondary); /* Cor secundária no hover */
 }
 
+
+
+
+
+/* src/styles/globals.css */
+
+/* ... (seu CSS anterior, variáveis, cabeçalho, rodapé, modal...) ... */
 
 /* ----------------------------------------------------------------- */
 /* ESTILOS PARA A PÁGINA HOME (SEÇÕES E FONTES GRANDES) */
@@ -383,6 +405,162 @@ body {
   opacity: 0.9;
   line-height: 1.6;
 }
+
+
+/* ================= SEÇÃO FEATURES ================= */
+.home-features-section {
+    padding: 6rem 0 8rem; /* Espaçamento generoso */
+    /* Cor de fundo ligeiramente diferente para separar visualmente (opcional) */
+    background-color: rgba(var(--color-card-bg-rgb), 0.5); 
+}
+
+.features-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 5rem; /* Margem grande antes dos cards */
+}
+
+.features-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Detalhe sutil abaixo do título */
+.features-title::after {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    margin: 1rem auto 0;
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+.features-description {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+/* Grid dos Cards */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    justify-items: center;
+}
+
+/* ================= FEATURE CARDS (CLEAN & ELEGANT) ================= */
+.feature-card {
+    background-color: var(--color-card-bg);
+    padding: 3rem 2.5rem;
+    border-radius: 1rem;
+    /* Borda muito fina e sutil */
+    border: 1px solid rgba(var(--color-text-rgb), 0.08);
+    text-align: left; /* Alinhamento à esquerda para um visual mais profissional */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição suave */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04); /* Sombra inicial quase imperceptível */
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha itens à esquerda */
+}
+
+/* Barra de destaque superior colorida no hover */
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--color-primary); /* Cor padrão (verde) */
+    transform: scaleX(0); /* Começa invisível */
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+/* Cores específicas para a barra de cada card */
+.card-analysis::before { background: var(--color-primary); }
+.card-courses::before { background: var(--color-secondary); }
+.card-certification::before { background: linear-gradient(to right, var(--color-primary), var(--color-secondary)); }
+
+/* Efeito de Hover no Card */
+.feature-card:hover {
+    transform: translateY(-8px); /* Elevação elegante */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08); /* Sombra suave e difusa */
+    border-color: transparent; /* Borda some para dar lugar à sombra */
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1); /* Mostra a barra colorida */
+}
+
+/* Wrapper do Ícone */
+.feature-icon-wrapper {
+    background-color: rgba(var(--color-primary-rgb), 0.1); /* Fundo sutil com a cor primária */
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Muda a cor do fundo do ícone no hover do card */
+.feature-card:hover .feature-icon-wrapper {
+    background-color: var(--color-primary);
+    transform: scale(1.1) rotate(-5deg); /* Pequeno movimento divertido */
+}
+/* Cores específicas para o ícone de cada card */
+.card-courses:hover .feature-icon-wrapper { background-color: var(--color-secondary); }
+.card-certification:hover .feature-icon-wrapper { background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); }
+
+
+.feature-icon {
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+/* Muda a cor do emoji para branco no hover */
+.feature-card:hover .feature-icon {
+    filter: brightness(0) invert(1); /* Torna o emoji branco */
+}
+
+
+.feature-card-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+.feature-card:hover .feature-card-title {
+    color: var(--color-primary); /* Título fica colorido no hover */
+}
+.card-courses:hover .feature-card-title { color: var(--color-secondary); }
+
+
+.feature-card-text {
+    font-size: 1rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+
 
 /* ================================================================= */
 /* ESTILOS MODERNOS PARA O MODAL DE GERENCIAMENTO DE CLIENTES (FINAL) */
@@ -726,110 +904,8 @@ body {
 }
 
 
-/* src/styles/globals.css */
-
-/* ... (todo o seu CSS existente) ... */
 
 
-/* ----------------------------------------------------------------- */
-/* ESTILOS PARA A PÁGINA CONTATO */
-/* ----------------------------------------------------------------- */
-
-/* Layout de Grid para a seção de conteúdo */
-.contact-grid-layout {
-    display: grid;
-    grid-template-columns: 1fr; /* Mobile: 1 coluna empilhada */
-    gap: 4rem;
-    width: 100%;
-    max-width: 1200px;
-    margin-top: 2rem;
-}
-
-/* Breakpoint para Desktop: 2 colunas */
-@media (min-width: 1024px) {
-    .contact-grid-layout {
-        grid-template-columns: 1fr 1.5fr; /* Esquerda menor, Direita (form) maior */
-        align-items: start;
-    }
-}
-
-/* Ajuste para os cards que são links */
-.contact-card-link {
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* --- ESTILOS DO FORMULÁRIO --- */
-
-.contact-form-container {
-    background-color: var(--color-background);
-    padding: 3rem;
-    border-radius: 1.5rem;
-    border: 2px solid rgba(var(--color-primary-rgb), 0.1);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form-label {
-    font-weight: 600;
-    color: var(--color-text);
-    font-size: 0.95rem;
-    margin-left: 0.25rem;
-}
-
-/* Estilo base para inputs e textarea */
-.form-input, .form-textarea {
-    width: 100%;
-    padding: 1rem;
-    border-radius: 0.75rem;
-    border: 2px solid rgba(var(--color-text-rgb), 0.15);
-    background-color: var(--color-card-bg); /* Fundo ligeiramente diferente do container */
-    color: var(--color-text);
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-/* Efeito Neon no Foco dos Inputs */
-.form-input:focus, .form-textarea:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 
-        0 0 0 4px rgba(var(--color-primary-rgb), 0.1), /* Anel externo sutil */
-        0 0 15px rgba(var(--color-primary-rgb), 0.2); /* Brilho neon */
-}
-
-.form-textarea {
-    resize: vertical; /* Permite redimensionar apenas verticalmente */
-}
-
-/* Botão de Enviar */
-.form-submit-button {
-    margin-top: 1rem;
-    padding: 1rem 2rem;
-    background-color: var(--color-primary);
-    color: white;
-    font-weight: bold;
-    font-size: 1.125rem;
-    border: none;
-    border-radius: 9999px; /* Pílula */
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px -1px rgba(var(--color-primary-rgb), 0.2);
-}
-
-.form-submit-button:hover {
-    background-color: var(--color-secondary);
-    transform: translateY(-3px);
-    box-shadow: 
-        0 10px 15px -3px rgba(var(--color-secondary-rgb), 0.3),
-        0 0 20px rgba(var(--color-secondary-rgb), 0.4); /* Brilho neon no hover */
-}
 
 
 /* ----------------------------------------------------------------- */
@@ -946,3 +1022,1412 @@ body {
   }
 }
 
+
+
+
+
+
+
+
+/* ================================================================= */
+/* RESPONSIVIDADE: CABEÇALHO */
+/* ================================================================= */
+
+/* ================================================================= */
+/* RESPONSIVIDADE: CABEÇALHO (CORRIGIDO) */
+/* ================================================================= */
+
+/* --- Estilos Base (XS e SM - Celulares < 768px) --- */
+.cabecalho-base {
+    height: 70px; /* Altura ligeiramente menor no mobile */
+}
+
+.navegacao-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* Em telas pequenas, os links do meio somem para dar espaço */
+    justify-content: space-between; 
+    /* IMPORTANTE: Garante que não quebre linha em telas muito pequenas */
+    flex-wrap: nowrap; 
+}
+
+.logo-cabecalho {
+    height: 40px; /* Logo menor para economizar espaço */
+}
+
+.logo-title {
+    font-size: 1rem; /* Título menor */
+    white-space: nowrap; /* Impede que o título quebre em duas linhas */
+}
+
+/* ESCONDE os links de navegação centrais no mobile e tablets retrato */
+.nav-links-container {
+    display: none; 
+}
+
+.botao-login {
+    padding: 0.5rem 1rem; /* Botão menor e mais compacto */
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+.action-buttons-container {
+    gap: 0.5rem; /* Menos espaço entre os botões de ação */
+}
+
+
+/* --- Breakpoint SM (Celulares maiores ≥ 576px) --- */
+@media (min-width: 576px) {
+    .logo-cabecalho { height: 45px; }
+    .logo-title { font-size: 1.1rem; }
+    .botao-login { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+}
+
+
+/* --- Breakpoint MD (Tablets retrato ≥ 768px) --- */
+@media (min-width: 768px) {
+    .cabecalho-base {
+        height: 80px; /* Altura padrão */
+    }
+
+    .navegacao-content {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .logo-cabecalho {
+        height: 50px; /* Logo tamanho médio */
+    }
+    .logo-title { font-size: 1.25rem; }
+
+    
+    .botao-login {
+        padding: 0.7rem 1.5rem; 
+        font-size: 0.95rem;
+    }
+    .action-buttons-container { gap: 1rem; }
+}
+
+
+/* --- Breakpoint LG (Laptops/Desktops/Tablets paisagem ≥ 992px) --- */
+@media (min-width: 992px) {
+    .logo-cabecalho { height: 55px; /* Logo tamanho padrão */ }
+
+    /* AGORA SIM, MOSTRA os links de navegação */
+    .nav-links-container {
+        display: flex;
+        gap: 2rem; /* Espaçamento inicial */
+    }
+    
+    .botao-login {
+        padding: 0.75rem 2rem; /* Botão tamanho padrão */
+        font-size: 1rem;
+    }
+}
+
+
+/* --- Breakpoint XL (Telas muito largas ≥ 1200px) --- */
+@media (min-width: 1200px) {
+    .nav-links-container {
+        gap: 3rem; /* Espaçamento mais generoso se houver tela sobrando */
+    }
+}
+
+
+
+/* ================================================================= */
+/* RESPONSIVIDADE: RODAPÉ */
+/* ================================================================= */
+
+/* --- Estilos Base (XS - Celulares pequenos) --- */
+.rodape-base {
+    padding: 3rem 1rem; /* Padding ajustado para mobile */
+}
+
+.rodape-content {
+    display: flex;
+    flex-direction: column; /* EMPILHA as seções verticalmente */
+    align-items: center; /* Centraliza tudo no mobile */
+    text-align: center;
+    gap: 3rem; /* Espaço grande entre as seções empilhadas */
+}
+
+/* Seção da esquerda (Logo/Copy) centralizada */
+.rodape-info-section {
+    align-items: center; 
+    max-width: 100%;
+}
+
+/* Ajuste de links para ficarem centralizados e fáceis de clicar */
+.rodape-link {
+    padding: 0.5rem; /* Área de clique maior no mobile */
+    display: block;
+}
+
+
+/* --- Breakpoint SM (Celulares maiores ≥ 576px) --- */
+@media (min-width: 576px) {
+    /* Talvez reduzir um pouco o gap se necessário */
+    .rodape-content {
+        gap: 2.5rem;
+    }
+}
+
+
+/* --- Breakpoint MD (Tablets ≥ 768px) --- */
+@media (min-width: 768px) {
+    .rodape-base {
+        padding: 4rem 2rem;
+    }
+
+    .rodape-content {
+        flex-direction: row; /* VOLTA a ficar lado a lado */
+        align-items: flex-start; /* Alinha ao topo */
+        text-align: left; /* Alinha texto à esquerda */
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .rodape-info-section {
+        align-items: flex-start; /* Alinha logo à esquerda */
+        max-width: 300px;
+    }
+
+    .rodape-link {
+        padding: 0; /* Remove padding extra do mobile */
+        display: inline-block; /* Ou block, dependendo da sua estrutura original */
+    }
+}
+
+
+/* --- Breakpoint LG (Desktops ≥ 992px) --- */
+@media (min-width: 992px) {
+    .rodape-content {
+        gap: 4rem; /* Mais espaço horizontal entre as colunas */
+    }
+}
+
+
+
+
+
+/* ================================================================= */
+/* RESPONSIVIDADE: PÁGINA HOME (Estilo Clean & Professional) */
+/* ================================================================= */
+
+/* --- Estilos Base (XS - Celulares < 576px) --- */
+
+/* Wrapper e Container */
+.home-wrapper {
+    background-color: var(--color-background);
+    width: 100%;
+}
+.home-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem; /* Padding lateral menor para mobile */
+}
+
+/* === SEÇÃO HERO (Mobile Base) === */
+.home-hero-section {
+    padding: 4rem 0; /* Espaçamento vertical reduzido */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-bottom: 1px solid rgba(var(--color-text-rgb), 0.05);
+}
+
+.hero-content {
+    max-width: 100%; /* Ocupa toda a largura no mobile */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-title-group {
+    display: flex;
+    flex-direction: column; /* Empilha logo e título no mobile */
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-logo {
+    width: 4rem; /* Logo menor */
+    height: 4rem;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(var(--color-primary-rgb), 0.2));
+}
+
+.hero-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 2.5rem; /* Título bem menor para caber na tela */
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.hero-subtitle-primary {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem; /* Subtítulo menor */
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle-secondary {
+    font-size: 1rem; /* Texto base menor */
+    color: var(--color-text);
+    opacity: 0.8;
+    line-height: 1.5;
+    max-width: 100%;
+    margin-bottom: 2rem;
+}
+
+.hero-cta-button {
+    padding: 0.8rem 2rem; /* Botão ligeiramente menor */
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(var(--color-primary-rgb), 0.2);
+    width: 100%; /* Botão ocupa toda a largura no mobile */
+    max-width: 300px; /* Mas não fica exageradamente largo */
+}
+.hero-cta-button:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(var(--color-secondary-rgb), 0.3);
+}
+
+
+/* === SEÇÃO FEATURES (Mobile Base) === */
+.home-features-section {
+    padding: 4rem 0 5rem; /* Espaçamento reduzido */
+    background-color: rgba(var(--color-card-bg-rgb), 0.5);
+}
+
+.features-header {
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto 3rem; /* Margem menor antes dos cards */
+}
+
+.features-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2rem; /* Título menor */
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+.features-title::after {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    margin: 0.75rem auto 0;
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+.features-description {
+    font-size: 1rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+/* Grid dos Cards (Mobile) */
+.features-grid {
+    display: grid;
+    /* Garante 1 coluna em telas muito pequenas, 2 se couber */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem; /* Gap menor */
+    justify-items: center;
+}
+
+/* Feature Cards (Mobile) */
+.feature-card {
+    background-color: var(--color-card-bg);
+    padding: 2rem 1.5rem; /* Padding interno reduzido */
+    border-radius: 1rem;
+    border: 1px solid rgba(var(--color-text-rgb), 0.08);
+    text-align: left;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px; /* Garante que não fique muito largo sozinho */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+.card-analysis::before { background: var(--color-primary); }
+.card-courses::before { background: var(--color-secondary); }
+.card-certification::before { background: linear-gradient(to right, var(--color-primary), var(--color-secondary)); }
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    border-color: transparent;
+}
+.feature-card:hover::before { transform: scaleX(1); }
+
+/* Wrapper do Ícone (Mobile) */
+.feature-icon-wrapper {
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+    width: 3.5rem; /* Ícone menor */
+    height: 3.5rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+.feature-card:hover .feature-icon-wrapper {
+    background-color: var(--color-primary);
+    transform: scale(1.1) rotate(-5deg);
+}
+.card-courses:hover .feature-icon-wrapper { background-color: var(--color-secondary); }
+.card-certification:hover .feature-icon-wrapper { background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); }
+
+.feature-icon {
+    font-size: 1.75rem; /* Emoji menor */
+    transition: all 0.3s ease;
+}
+.feature-card:hover .feature-icon { filter: brightness(0) invert(1); }
+
+.feature-card-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem; /* Título do card menor */
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+}
+.feature-card:hover .feature-card-title { color: var(--color-primary); }
+.card-courses:hover .feature-card-title { color: var(--color-secondary); }
+
+.feature-card-text {
+    font-size: 0.95rem; /* Texto do card ligeiramente menor */
+    color: var(--color-text);
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+
+/* --- Breakpoint SM (Celulares maiores ≥ 576px) --- */
+@media (min-width: 576px) {
+    .home-container { padding: 0 2rem; }
+    
+    .hero-title { font-size: 3rem; }
+    .hero-subtitle-primary { font-size: 1.75rem; }
+    .hero-subtitle-secondary { font-size: 1.1rem; }
+    .hero-cta-button { width: auto; } /* Botão deixa de ocupar largura total */
+
+    .features-title { font-size: 2.5rem; }
+    .features-description { font-size: 1.1rem; }
+}
+
+
+/* --- Breakpoint MD (Tablets ≥ 768px) --- */
+@media (min-width: 768px) {
+    /* Hero Section */
+    .home-hero-section { padding: 6rem 0; }
+    .hero-title-group {
+        flex-direction: row; /* Logo e título lado a lado novamente */
+        gap: 1.5rem;
+    }
+    .hero-logo { width: 5rem; height: 5rem; }
+    .hero-title { font-size: 3.5rem; }
+    .hero-subtitle-secondary { max-width: 600px; }
+
+    /* Features Section */
+    .home-features-section { padding: 5rem 0 7rem; }
+    .features-header { margin-bottom: 4rem; max-width: 700px; }
+    
+    .features-grid {
+        gap: 2rem;
+        /* Volta para 300px mínimo, deve caber 2 colunas aqui */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    /* Feature Cards */
+    .feature-card { padding: 2.5rem 2rem; }
+    .feature-icon-wrapper { width: 4rem; height: 4rem; margin-bottom: 1.5rem; }
+    .feature-icon { font-size: 2rem; }
+    .feature-card-title { font-size: 1.5rem; }
+    .feature-card-text { font-size: 1rem; }
+}
+
+
+/* --- Breakpoint LG (Laptops/Desktops ≥ 992px) --- */
+@media (min-width: 992px) {
+    /* Restaura o design desktop original */
+    .home-hero-section { padding: 8rem 0; }
+    .hero-title { font-size: 4rem; }
+    .hero-subtitle-primary { font-size: 2rem; }
+    .hero-subtitle-secondary { font-size: 1.25rem; }
+    .hero-cta-button { padding: 1rem 2.5rem; font-size: 1.125rem; }
+
+    .home-features-section { padding: 6rem 0 8rem; }
+    .features-header { margin-bottom: 5rem; }
+    .features-title { font-size: 3rem; }
+    .features-description { font-size: 1.25rem; }
+    
+    .features-grid { gap: 2.5rem; }
+    .feature-card { padding: 3rem 2.5rem; }
+}
+
+
+
+
+
+
+
+
+
+/* ================================================================= */
+/* RESPONSIVIDADE: PÁGINA CURSOS */
+/* ================================================================= */
+
+/* --- Estilos Base (XS - Celulares < 576px) --- */
+
+/* Reutiliza o container padrão, mas com margem superior/inferior para a página */
+.page-content-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 3rem auto 5rem; /* Margem vertical para afastar de header/footer */
+    padding: 0 1.5rem; /* Padding lateral de mobile */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Título da Seção */
+.section-title-cursos {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2rem; /* Tamanho mobile */
+    color: var(--color-secondary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Estados de Loading e Erro */
+.loading-container, .error-container, .empty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 1rem;
+    min-height: 300px; /* Garante altura mínima */
+    width: 100%;
+}
+.loading-text {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    opacity: 0.7;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.4; } }
+
+.error-box {
+    background-color: rgba(220, 53, 69, 0.1); /* Fundo vermelho suave */
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    max-width: 90%;
+}
+.error-title { font-weight: 700; display: block; margin-bottom: 0.5rem; }
+.error-hint { font-size: 0.875rem; margin-top: 1rem; display: block; opacity: 0.8; }
+
+.empty-text { font-size: 1.25rem; color: var(--color-text); opacity: 0.7; margin-bottom: 0.5rem; }
+.empty-subtext { font-size: 1rem; color: var(--color-text); opacity: 0.5; }
+
+
+/* --- GRID DE CURSOS (Mobile Base) --- */
+.cursos-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 Coluna por padrão */
+    gap: 1.5rem; /* Espaçamento mobile */
+    width: 100%;
+    justify-items: center; /* Centraliza os cards se forem menores que a coluna */
+}
+
+/* --- CARD DO CURSO (Mobile Base) --- */
+.curso-card {
+    background-color: var(--color-card-bg);
+    border: 1px solid rgba(var(--color-text-rgb), 0.08);
+    border-radius: 1rem;
+    padding: 1.5rem; /* Padding interno menor */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    height: 100%; /* Ocupa toda a altura da célula do grid */
+    width: 100%;
+    max-width: 400px; /* Não fica muito largo em celulares maiores */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    position: relative;
+    overflow: hidden;
+}
+/* Barra superior colorida (reutiliza a lógica dos feature cards) */
+.curso-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: var(--color-primary); /* Cor padrão */
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+}
+/* Exemplo de variação por área (você pode adicionar mais no React) */
+.curso-card[data-area="Tecnologia"]::before { background: var(--color-secondary); }
+
+.curso-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    border-color: transparent;
+}
+.curso-card:hover::before { transform: scaleX(1); }
+
+.curso-card-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem; /* Título mobile */
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+.curso-card-description {
+    font-size: 0.95rem; /* Texto mobile */
+    color: var(--color-text);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Empurra o conteúdo inferior para baixo */
+    line-height: 1.5;
+}
+.curso-card-footer {
+    margin-top: auto; /* Garante que fique no fundo do card */
+    padding-top: 1rem;
+    border-top: 1px solid rgba(var(--color-text-rgb), 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text);
+    opacity: 0.9;
+}
+.curso-info-item { display: flex; align-items: center; gap: 0.5rem; }
+.info-icon { font-size: 1rem; }
+.info-highlight { font-weight: 600; color: var(--color-primary); }
+
+.curso-card-button {
+    margin-top: 1.5rem;
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%; /* Botão largura total no mobile */
+    text-align: center;
+    font-size: 1rem;
+}
+.curso-card-button:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(var(--color-secondary-rgb), 0.2);
+}
+
+
+/* --- Breakpoint SM (Celulares maiores ≥ 576px) --- */
+@media (min-width: 576px) {
+    .page-content-container { padding: 0 2rem; }
+    .section-title-cursos { font-size: 2.5rem; }
+}
+
+
+/* --- Breakpoint MD (Tablets ≥ 768px) --- */
+@media (min-width: 768px) {
+    .page-content-container { margin: 4rem auto 6rem; }
+    .cursos-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 Colunas */
+        gap: 2rem; /* Espaçamento maior */
+    }
+    .curso-card {
+        padding: 2rem; /* Padding interno padrão */
+        max-width: none; /* Remove restrição de largura */
+    }
+    .curso-card-title { font-size: 1.5rem; }
+    .curso-card-description { font-size: 1rem; }
+    .curso-card-footer { flex-direction: row; justify-content: space-between; }
+}
+
+
+/* --- Breakpoint LG (Laptops/Desktops ≥ 992px) --- */
+@media (min-width: 992px) {
+    .page-content-container { margin: 5rem auto 8rem; }
+    .section-title-cursos { font-size: 3rem; margin-bottom: 3rem; }
+    .cursos-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 Colunas */
+        gap: 2.5rem; /* Espaçamento generoso */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================================================= */
+/* RESPONSIVIDADE: PÁGINA SOBRE */
+/* ================================================================= */
+
+/* --- Estilos Base (XS - Celulares < 576px) --- */
+
+.about-wrapper {
+    background-color: var(--color-background);
+    width: 100%;
+}
+
+/* Reutiliza o container padrão */
+.about-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* === SEÇÃO HERO (Mobile) === */
+.about-hero-section {
+    padding: 4rem 0; /* Espaçamento reduzido */
+    background-color: var(--color-background);
+    border-bottom: 1px solid rgba(var(--color-text-rgb), 0.05);
+}
+
+/* Título e Logo */
+.about-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 2.25rem; /* Fonte bem menor para mobile */
+    color: var(--color-text);
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column; /* Empilha logo e texto no celular */
+    align-items: center;
+    gap: 1rem;
+}
+
+.about-logo {
+    width: 3.5rem; /* Logo menor */
+    height: 3.5rem;
+    object-fit: contain;
+}
+
+/* Missão */
+.about-mission {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem; /* Fonte menor */
+    color: var(--color-primary);
+    line-height: 1.4;
+    max-width: 100%;
+}
+
+
+/* === SEÇÃO CONTEÚDO (Mobile) === */
+.about-content-section {
+    padding: 4rem 0 6rem;
+    background-color: rgba(var(--color-card-bg-rgb), 0.5);
+}
+
+.about-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2rem; /* Título de seção menor */
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.about-text {
+    font-size: 1rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+
+/* === GRID DE VALORES (Mobile - 1 Coluna) === */
+.values-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Força 1 coluna no mobile */
+    gap: 1.5rem;
+    justify-items: center;
+    margin-top: 2rem;
+}
+
+/* Cards de Valores */
+.value-card {
+    background-color: var(--color-card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(var(--color-text-rgb), 0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    width: 100%;
+    max-width: 350px; /* Largura máxima para não esticar demais */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    border-color: var(--color-primary);
+}
+
+.value-icon {
+    font-size: 2.5rem; /* Emoji menor */
+    margin-bottom: 0.5rem;
+}
+
+.value-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: 0;
+}
+
+.value-text {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+
+/* --- Breakpoint SM (Celulares maiores ≥ 576px) --- */
+@media (min-width: 576px) {
+    .about-container { padding: 0 2rem; }
+    .about-title { font-size: 2.75rem; }
+    .about-mission { font-size: 1.5rem; }
+}
+
+
+/* --- Breakpoint MD (Tablets ≥ 768px) --- */
+@media (min-width: 768px) {
+    /* Hero */
+    .about-hero-section { padding: 6rem 0; }
+    .about-title {
+        flex-direction: row; /* Logo ao lado do texto */
+        justify-content: center;
+        font-size: 3.5rem;
+        gap: 1.5rem;
+    }
+    .about-logo { width: 4.5rem; height: 4.5rem; }
+    .about-mission { font-size: 1.75rem; max-width: 800px; margin: 0 auto; }
+
+    /* Conteúdo */
+    .about-content-section { padding: 5rem 0 7rem; }
+    .about-section-title { font-size: 2.5rem; }
+    .about-text { font-size: 1.125rem; }
+
+    /* Grid de Valores - Tenta 3 colunas, se não der, usa 2 ou 1 */
+    .values-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+    .value-card { padding: 2.5rem 2rem; max-width: none; } /* Remove max-width */
+    .value-icon { font-size: 3rem; }
+    .value-title { font-size: 1.5rem; }
+}
+
+
+/* --- Breakpoint LG (Laptops/Desktops ≥ 992px) --- */
+@media (min-width: 992px) {
+    .about-hero-section { padding: 8rem 0; }
+    .about-title { font-size: 4.5rem; }
+    .about-mission { font-size: 2rem; max-width: 900px; }
+
+    .about-content-section { padding: 6rem 0 8rem; }
+    .about-section-title { font-size: 3rem; }
+
+    /* Grid de Valores - Garante 3 colunas em telas grandes */
+    .values-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+    .value-card { padding: 3rem 2rem; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================================================= */
+/* RESPONSIVIDADE: PÁGINA CONTATO */
+/* ================================================================= */
+
+/* --- Estilos Base (XS - Celulares < 576px) --- */
+
+.contact-wrapper {
+    background-color: var(--color-background);
+    width: 100%;
+}
+
+/* Reutiliza o container padrão com ajustes */
+.contact-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* === SEÇÃO HERO (Mobile) === */
+.contact-hero-section {
+    padding: 4rem 0; /* Espaçamento reduzido */
+    background-color: var(--color-background);
+    border-bottom: 1px solid rgba(var(--color-text-rgb), 0.05);
+    text-align: center;
+}
+
+/* Título e Logo */
+.contact-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 2.25rem; /* Fonte menor para mobile */
+    color: var(--color-secondary); /* Cor secundária (roxo) */
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column; /* Empilha no mobile */
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-logo {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: contain;
+}
+
+/* Descrição */
+.contact-description {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem; /* Fonte menor */
+    color: var(--color-text);
+    line-height: 1.4;
+    max-width: 100%;
+}
+
+
+/* === SEÇÃO CONTEÚDO (Mobile) === */
+.contact-content-section {
+    padding: 4rem 0 6rem;
+    background-color: rgba(var(--color-card-bg-rgb), 0.5);
+}
+
+/* Layout do Grid Principal (Mobile - 1 Coluna empilhada) */
+.contact-grid-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* Espaço entre os blocos de canais e formulário */
+    width: 100%;
+    max-width: 500px; /* Limita largura no mobile para não esticar demais */
+    margin: 0 auto;
+}
+
+/* Colunas internas */
+.contact-info-column, .contact-form-column {
+    width: 100%;
+}
+
+/* Títulos das seções internas */
+.contact-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    text-align: center; /* Centralizado no mobile */
+}
+
+
+/* --- CARDS DE CANAIS (Mobile) --- */
+.contact-channel-card {
+    background-color: var(--color-card-bg);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(var(--color-text-rgb), 0.08);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none; /* Para links */
+    color: var(--color-text);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+/* Hover apenas para dispositivos que suportam (evita "stickiness" no touch) */
+@media (hover: hover) {
+    .contact-channel-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+        border-color: var(--color-primary);
+    }
+}
+
+.contact-channel-icon {
+    font-size: 2rem;
+}
+
+.contact-channel-info h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.contact-channel-info p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    word-break: break-all; /* Garante que emails longos não quebrem o layout */
+}
+
+
+/* --- FORMULÁRIO (Mobile Base) --- */
+.contact-form-container {
+    background-color: var(--color-background);
+    padding: 1.5rem; /* Padding menor no mobile */
+    border-radius: 1rem;
+    border: 2px solid rgba(var(--color-primary-rgb), 0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Grid para campos lado a lado (Empilha no mobile) */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+/* Estilos dos inputs (Reutilizados e ajustados) */
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-label { font-weight: 600; color: var(--color-text); font-size: 0.95rem; margin-left: 0.25rem; }
+.form-input, .form-textarea {
+    width: 100%; padding: 0.8rem; border-radius: 0.75rem;
+    border: 2px solid rgba(var(--color-text-rgb), 0.15);
+    background-color: var(--color-card-bg); color: var(--color-text);
+    font-family: 'Inter', sans-serif; font-size: 1rem; transition: all 0.3s ease;
+}
+.form-input:focus, .form-textarea:focus {
+    outline: none; border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.1);
+}
+.form-textarea { resize: vertical; }
+.form-submit-button {
+    width: 100%; padding: 1rem; background-color: var(--color-primary);
+    color: white; font-weight: bold; font-size: 1.125rem; border: none;
+    border-radius: 9999px; cursor: pointer; transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(var(--color-primary-rgb), 0.2);
+}
+@media (hover: hover) {
+    .form-submit-button:hover {
+        background-color: var(--color-secondary); transform: translateY(-3px);
+        box-shadow: 0 10px 15px -3px rgba(var(--color-secondary-rgb), 0.3);
+    }
+}
+
+
+/* --- Breakpoint SM (Celulares maiores ≥ 576px) --- */
+@media (min-width: 576px) {
+    .contact-container { padding: 0 2rem; }
+    .contact-title { font-size: 2.75rem; }
+    .contact-description { font-size: 1.5rem; }
+    .contact-form-container { padding: 2rem; }
+}
+
+
+/* --- Breakpoint MD (Tablets ≥ 768px) --- */
+@media (min-width: 768px) {
+    /* Hero */
+    .contact-hero-section { padding: 6rem 0; }
+    .contact-title {
+        flex-direction: row; /* Logo ao lado do título */
+        justify-content: center;
+        font-size: 3.5rem;
+        gap: 1.5rem;
+    }
+    .contact-logo { width: 4.5rem; height: 4.5rem; }
+    .contact-description { font-size: 1.75rem; max-width: 800px; }
+
+    /* Conteúdo */
+    .contact-content-section { padding: 5rem 0 7rem; }
+    
+    /* Grid Principal - Vira 2 colunas */
+    .contact-grid-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr; /* Esquerda menor, direita maior */
+        gap: 3rem;
+        max-width: none; /* Remove limite de largura */
+        align-items: start;
+    }
+
+    .contact-section-title {
+        text-align: left; /* Alinha à esquerda */
+        font-size: 2rem;
+    }
+
+    /* Cards */
+    .contact-channel-card { padding: 2rem; gap: 1.5rem; }
+    .contact-channel-icon { font-size: 2.5rem; }
+    .contact-channel-info h3 { font-size: 1.25rem; }
+    .contact-channel-info p { font-size: 1rem; }
+
+    /* Form */
+    .contact-form-container { padding: 2.5rem; }
+    .form-grid-2 { grid-template-columns: 1fr 1fr; gap: 1.5rem; } /* Campos lado a lado */
+    .form-submit-button { width: auto; padding: 1rem 2.5rem; } /* Botão não ocupa tudo */
+}
+
+
+/* --- Breakpoint LG (Laptops/Desktops ≥ 992px) --- */
+@media (min-width: 992px) {
+    .contact-hero-section { padding: 8rem 0; }
+    .contact-title { font-size: 4.5rem; }
+    .contact-description { font-size: 2rem; max-width: 900px; }
+
+    .contact-content-section { padding: 6rem 0 8rem; }
+    .contact-grid-layout { gap: 5rem; }
+
+    .contact-channel-card { padding: 2.5rem; }
+}
+
+
+
+
+/* ================================================================= */
+/* ESTILOS ESPECÍFICOS E RESPONSIVIDADE (XS, SM, MD, LG, XL): INTEGRANTES */
+/* ================================================================= */
+
+/* --- ESTILOS BASE COMUNS (Serão aplicados e sobrescritos conforme a tela) --- */
+.integrantes-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.membro-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-card-bg);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* Mantendo sua largura máxima original */
+    max-width: 280px; 
+    min-height: 400px;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(var(--color-text-rgb), 0.05);
+}
+
+.membro-card:hover {
+    transform: translateY(-5px);
+}
+
+.membro-foto {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 4px solid var(--color-primary);
+    margin-bottom: 1rem;
+    transition: box-shadow 0.3s ease;
+}
+.dark .membro-foto {
+    box-shadow:
+        0 0 5px var(--color-primary),
+        0 0 30px var(--color-primary),
+        0 0 15px var(--color-secondary);
+}
+
+.membro-nome {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.membro-sobrenome {
+    color: var(--color-text);
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+}
+
+.membro-info-rm-turma {
+    color: var(--color-text);
+    opacity: 0.6;
+    line-height: 1.5;
+}
+
+.membro-links-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(var(--color-text-rgb), 0.2);
+    width: 100%;
+    justify-content: center;
+}
+
+.membro-social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text);
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+.membro-social-link:hover {
+    color: var(--color-primary);
+}
+.membro-social-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+
+/* ================================================================= */
+/* RESPONSIVIDADE POR FAIXA DE DISPOSITIVO */
+/* ================================================================= */
+
+/* --- XS: eXtra Small devices (Celulares em pé) < 576px --- */
+@media (max-width: 575.98px) {
+    .integrantes-container {
+        padding: 2rem 1rem; /* Padding lateral mínimo */
+    }
+    .section-title {
+        font-size: 1.75rem; /* Título menor */
+    }
+    .section-description {
+        font-size: 1rem;
+    }
+    .integrantes-grid {
+        display: flex;
+        flex-direction: column; /* Empilha um card embaixo do outro */
+        gap: 2rem;
+    }
+    .membro-card {
+        margin-bottom: 1rem; /* Margem de fallback */
+    }
+    .membro-nome { font-size: 1.25rem; }
+    .membro-sobrenome { font-size: 1rem; }
+}
+
+
+/* --- SM: SMall devices (Celulares deitados/Tablets pequenos) ≥ 576px e < 768px --- */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .integrantes-container {
+        padding: 3rem 1.5rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .integrantes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 Colunas */
+        gap: 1.5rem;
+        justify-items: center;
+    }
+    /* O card usa o max-width padrão de 280px */
+    .membro-nome { font-size: 1.35rem; }
+}
+
+
+/* --- MD: MeDium devices (Tablets) ≥ 768px e < 992px --- */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .integrantes-container {
+        padding: 4rem 2rem;
+    }
+    .section-title {
+        font-size: 2.25rem;
+    }
+    .integrantes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 Colunas com mais espaço */
+        gap: 2rem;
+        justify-items: center;
+    }
+    /* Podemos permitir que o card cresça um pouco mais aqui se quiser */
+    .membro-card {
+        max-width: 300px; 
+        padding: 1.75rem;
+    }
+    .membro-nome { font-size: 1.5rem; }
+    .membro-foto { width: 8.5rem; height: 8.5rem; }
+}
+
+
+/* --- LG: Large Devices (Laptops/Desktops) ≥ 992px e < 1200px --- */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .integrantes-container {
+        padding: 5rem 2.5rem;
+    }
+    .section-title {
+        font-size: 2.5rem;
+    }
+    .integrantes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 Colunas */
+        gap: 2.5rem;
+        justify-items: center;
+    }
+    .membro-card {
+        max-width: 280px; /* Volta ao padrão para caber 3 */
+    }
+}
+
+
+/* --- XL: eXtra Large devices (Telas grandes) ≥ 1200px --- */
+@media (min-width: 1200px) {
+    .integrantes-container {
+        padding: 6rem 3rem;
+    }
+    .section-title {
+        font-size: 3rem;
+    }
+    .integrantes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Mantém 3 colunas, mas com mais folga */
+        gap: 3rem;
+        justify-items: center;
+    }
+    /* Se você tiver 4 integrantes, pode mudar para repeat(4, 1fr) aqui */
+    
+    .membro-card {
+        max-width: 300px; /* Card ligeiramente maior para preencher o espaço */
+        padding: 2rem;
+    }
+    .membro-foto { width: 9rem; height: 9rem; }
+    .membro-nome { font-size: 1.6rem; }
+}
+
+/* ===== AUMENTAR O ESPAÇAMENTO ENTRE OS CARDS DE CANAIS DIRETOS ===== */
+.contact-info-column .flex {
+    gap: 3rem !important;  /* Ajuste que você pediu */
+}
+
+/* Opcional: melhora o respiro visual */
+.contact-channel-card {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Espaçamento específico entre VISÃO e VALORES --- */
+
+/* Bloco da Visão (título + texto) */
+.about-vision-block {
+    max-width: 48rem;
+    margin: 0 auto;
+    margin-bottom: 3rem; /* Espaço padrão entre visão e valores */
+}
+
+/* Em telas médias pra cima aumenta o respiro */
+@media (min-width: 768px) {
+    .about-vision-block {
+        margin-bottom: 4.5rem; /* ~72px */
+    }
+}
+
+/* Título da seção de valores com espaço reforçado */
+.about-values-title {
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Deixar os cards MUITO mais próximos no desktop */
+@media (min-width: 992px) {
+  .integrantes-grid {
+    column-gap: 0.5rem !important; /* espaço horizontal quase zero */
+    row-gap: 1rem !important;       /* vertical reduzido */
+  }
+}
+
+@media (min-width: 1200px) {
+  .integrantes-grid {
+    column-gap: 0.75rem !important; 
+    row-gap: 1.25rem !important;
+  }
+}
+
+/* Centralizar totalmente a seção "Nossos Valores Fundamentais" */
+.values-grid {
+    justify-items: center !important;   /* Centraliza cada card */
+    justify-content: center !important; /* Centraliza o grid como bloco */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;      /* Centraliza textos internos */
+}
+
+.about-values-title,
+.about-section-title {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
