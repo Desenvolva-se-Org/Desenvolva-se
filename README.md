@@ -26,14 +26,17 @@ src/
 
 ## 🛠️ Como Rodar
 
-1. Instalar dependências:
+1. abrir o cmd do vs code e ir no caminho da pasta:
+cd desenvolva-se
+
+2. Instalar dependências:
 npm install
 
-2. Inicializar a API de python:
+3. Inicializar a API de python:
 python backend/app.py
 
 
-3. Rodar em ambiente de desenvolvimento:
+4. Rodar em ambiente de desenvolvimento:
 npm run dev
 
 ---
