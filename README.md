@@ -100,19 +100,15 @@ http://localhost:5173/
 
 ## Screenshots e demonstração
 
-![alt text](image-1.png)
+![Página Home](src/assets/image-1.png)
 
+![Página Sobre](src/assets/image-2.png)
 
-![alt text](image-2.png)
+![Página Cursos](src/assets/image-3.png)
 
+![Página Contato](src/assets/image-4.png)
 
-![alt text](image-3.png)
-
-
-![alt text](image-4.png)
-
-
-![alt text](image-5.png)
+![Responsividade](src/assets/image-5.png)
 
 
 ## Links
