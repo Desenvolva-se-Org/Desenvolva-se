@@ -17,14 +17,12 @@ const Contato: React.FC = () => {
         <div className="contact-container text-center">
           
           <div className="contact-hero-header mb-6 md:mb-8">
-            {/* Título e Logo agrupados */}
             <h1 className="contact-title">
               <img src={LogoIcon} alt="Ícone Desenvolva-se" className="contact-logo" />
               Fale Conosco
             </h1>
           </div>
           
-          {/* Descrição */}
           <p className="contact-description">
             Pronto para impulsionar sua equipe? Entre em contato para discutir soluções B2B personalizadas.
           </p>
@@ -45,7 +43,9 @@ const Contato: React.FC = () => {
               <h2 className="contact-section-title">
                 Canais Diretos
               </h2>
-              <div className="flex flex-col gap-4">
+
+              {/* gap APLICADO VIA GLOBAL.CSS */}
+              <div className="flex flex-col">
                 
                 {/* Card E-mail */}
                 <a href="mailto:contato@desenvolva-se.com" className="contact-channel-card">
@@ -90,8 +90,7 @@ const Contato: React.FC = () => {
                     <input type="email" id="email" name="email" required className="form-input" placeholder="nome@empresa.com" />
                   </div>
 
-                   {/* Grid para Empresa/Cargo (Empilha no mobile, lado a lado no desktop) */}
-                   <div className="form-grid-2">
+                  <div className="form-grid-2">
                     <div className="form-group">
                         <label htmlFor="empresa" className="form-label">Empresa</label>
                         <input type="text" id="empresa" name="empresa" className="form-input" placeholder="Sua empresa" />
@@ -100,7 +99,7 @@ const Contato: React.FC = () => {
                         <label htmlFor="cargo" className="form-label">Cargo</label>
                         <input type="text" id="cargo" name="cargo" className="form-input" placeholder="Seu cargo" />
                     </div>
-                   </div>
+                  </div>
 
                   {/* Textarea Mensagem */}
                   <div className="form-group">
@@ -108,7 +107,6 @@ const Contato: React.FC = () => {
                     <textarea id="mensagem" name="mensagem" rows={5} required className="form-textarea" placeholder="Descreva sua necessidade..."></textarea>
                   </div>
 
-                  {/* Botão de Enviar */}
                   <button type="submit" className="form-submit-button mt-2">
                     Enviar Solicitação
                   </button>

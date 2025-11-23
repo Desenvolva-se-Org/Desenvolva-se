@@ -516,6 +516,119 @@ img, video {
     transition: all 0.3s ease;
 }
 
+
+/* ================= SEÇÃO FEATURES ================= */
+.home-features-section {
+    padding: 6rem 0 8rem; /* Espaçamento generoso */
+    /* Cor de fundo ligeiramente diferente para separar visualmente (opcional) */
+    background-color: rgba(var(--color-card-bg-rgb), 0.5); 
+}
+
+.features-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 5rem; /* Margem grande antes dos cards */
+}
+
+.features-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Detalhe sutil abaixo do título */
+.features-title::after {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    margin: 1rem auto 0;
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+.features-description {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+/* Grid dos Cards */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    justify-items: center;
+}
+
+/* ================= FEATURE CARDS (CLEAN & ELEGANT) ================= */
+.feature-card {
+    background-color: var(--color-card-bg);
+    padding: 3rem 2.5rem;
+    border-radius: 1rem;
+    /* Borda muito fina e sutil */
+    border: 1px solid rgba(var(--color-text-rgb), 0.08);
+    text-align: left; /* Alinhamento à esquerda para um visual mais profissional */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição suave */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04); /* Sombra inicial quase imperceptível */
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha itens à esquerda */
+}
+
+/* Barra de destaque superior colorida no hover */
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--color-primary); /* Cor padrão (verde) */
+    transform: scaleX(0); /* Começa invisível */
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+/* Cores específicas para a barra de cada card */
+.card-analysis::before { background: var(--color-primary); }
+.card-courses::before { background: var(--color-secondary); }
+.card-certification::before { background: linear-gradient(to right, var(--color-primary), var(--color-secondary)); }
+
+/* Efeito de Hover no Card */
+.feature-card:hover {
+    transform: translateY(-8px); /* Elevação elegante */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08); /* Sombra suave e difusa */
+    border-color: transparent; /* Borda some para dar lugar à sombra */
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1); /* Mostra a barra colorida */
+}
+
+/* Wrapper do Ícone */
+.feature-icon-wrapper {
+    background-color: rgba(var(--color-primary-rgb), 0.1); /* Fundo sutil com a cor primária */
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
 /* Muda a cor do fundo do ícone no hover do card */
 .feature-card:hover .feature-icon-wrapper {
     background-color: var(--color-primary);
@@ -2364,4 +2477,67 @@ img, video {
     }
     .membro-foto { width: 9rem; height: 9rem; }
     .membro-nome { font-size: 1.6rem; }
+}
+
+/* ===== AUMENTAR O ESPAÇAMENTO ENTRE OS CARDS DE CANAIS DIRETOS ===== */
+.contact-info-column .flex {
+    gap: 3rem !important;  /* Ajuste que você pediu */
+}
+
+/* Opcional: melhora o respiro visual */
+.contact-channel-card {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Espaçamento específico entre VISÃO e VALORES --- */
+
+/* Bloco da Visão (título + texto) */
+.about-vision-block {
+    max-width: 48rem;
+    margin: 0 auto;
+    margin-bottom: 3rem; /* Espaço padrão entre visão e valores */
+}
+
+/* Em telas médias pra cima aumenta o respiro */
+@media (min-width: 768px) {
+    .about-vision-block {
+        margin-bottom: 4.5rem; /* ~72px */
+    }
+}
+
+/* Título da seção de valores com espaço reforçado */
+.about-values-title {
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Deixar os cards MUITO mais próximos no desktop */
+@media (min-width: 992px) {
+  .integrantes-grid {
+    column-gap: 0.5rem !important; /* espaço horizontal quase zero */
+    row-gap: 1rem !important;       /* vertical reduzido */
+  }
+}
+
+@media (min-width: 1200px) {
+  .integrantes-grid {
+    column-gap: 0.75rem !important; 
+    row-gap: 1.25rem !important;
+  }
+}
+
+/* Centralizar totalmente a seção "Nossos Valores Fundamentais" */
+.values-grid {
+    justify-items: center !important;   /* Centraliza cada card */
+    justify-content: center !important; /* Centraliza o grid como bloco */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;      /* Centraliza textos internos */
+}
+
+.about-values-title,
+.about-section-title {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
